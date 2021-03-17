@@ -16,7 +16,10 @@ export const MainPage: React.FC = () => {
 
     return (
         <Content style={{height: window.innerHeight}}>
-            <Table columns={columns} dataSource={user.userProfiles}/>
+            <Table
+                style = {{padding:30}}
+                columns={columns}
+                dataSource={user.userProfiles}/>
         </Content>
     )
 }

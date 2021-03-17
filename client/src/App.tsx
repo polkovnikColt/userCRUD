@@ -5,6 +5,7 @@ import {Provider} from "react-redux";
 import {store} from "./store/store";
 import {Navbar} from './components/navbar/Navbar';
 import {MainPage} from "./components/main/MainPage";
+import {CreateAccountPage} from "./components/create/CreateAccountPage";
 
 const App: React.FC = () => {
 
@@ -15,7 +16,7 @@ const App: React.FC = () => {
                 <Navbar/>
                 <Switch>
                     <Route path={'/'} component={MainPage} exact={true}/>
-                    <Route path={'/user'}/>
+                    <Route path={'/user'} component={CreateAccountPage}/>
                 </Switch>
                 </Provider>
             </Layout>

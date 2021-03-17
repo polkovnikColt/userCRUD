@@ -35,4 +35,14 @@ export const columns: column[] = [
         dataIndex: 'role',
         key: 'role',
     },
+    {
+        title: 'City',
+        dataIndex: 'city',
+        key: 'city',
+    },
+    {
+        title: 'Birthday',
+        dataIndex: 'birthday',
+        key: 'birthday',
+    },
 ];

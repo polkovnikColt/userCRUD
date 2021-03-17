@@ -9,8 +9,10 @@ export const loadUser = () => {
             email:'example@email.com',
             password:'password',
             role: 'user',
+            city:'kiev',
+            birthday:'XX.XX.XXXX',
             gender:'male',
-            tags: ['nice', 'developer'],
+
         },
             {
                 key: '2',
@@ -19,8 +21,9 @@ export const loadUser = () => {
                 email:'example@email.com',
                 password:'password',
                 role: 'user',
+                city:'kiev',
+                birthday:'XX.XX.XXXX',
                 gender:'male',
-                tags: ['loser'],
             },
             {
                 key: '3',
@@ -29,8 +32,9 @@ export const loadUser = () => {
                 email:'example@email.com',
                 password:'password',
                 role: 'user',
+                city:'kiev',
+                birthday:'XX.XX.XXXX',
                 gender:'male',
-                tags: ['cool', 'teacher'],
             }]
     }
 }

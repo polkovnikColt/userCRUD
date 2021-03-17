@@ -8,6 +8,8 @@ export interface UserInterface{
     email:string,
     password:string,
     age:number,
+    city:string,
+    birthday:string,
     gender: 'male' | 'female',
     role:'user' | 'admin'
 }
