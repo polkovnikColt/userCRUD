@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
-import {Modal, Button, Form, Input, Select} from 'antd';
-import {Selector} from '../../reusable/Selector';
+import {Modal, Button, Form, Input} from 'antd';
+import {getFormData} from "./service";
+import {useDispatch} from "react-redux";
+import {loadUser, login} from "../../../store/user/userActions";
 
 export const ModalLogin = () => {
+    const dispatch = useDispatch();
     const [visible, setVisible] = useState(false);
     const [confirmLoading, setConfirmLoading] = useState(false);
 
@@ -15,6 +18,17 @@ export const ModalLogin = () => {
         setTimeout(() => {
             setVisible(false);
             setConfirmLoading(false);
+            dispatch(login({
+                name:'name',
+                email:'email',
+                password:'password',
+                gender:'male',
+                city:'city',
+                age: 21,
+                birthday:'XX.XX.XXXX',
+                role:'admin'
+            }));
+            dispatch(loadUser());
         }, 2000);
     };
 
@@ -34,23 +48,16 @@ export const ModalLogin = () => {
                 confirmLoading={confirmLoading}
                 onCancel={handleCancel}
             >
-
-                <Form.Item
-                    label="Email"
-                    name="email"
-                    rules={[{required: true, message: 'Please input your email!'}]}
-                >
-                    <Input/>
-                </Form.Item>
-
-                <Form.Item
-                    label="Password"
-                    name="password"
-                    rules={[{required: true, message: 'Please input your password!'}]}
-                >
-                    <Input.Password/>
-                </Form.Item>
-
+                {getFormData().map((item,i) =>
+                    <Form.Item
+                        label={item.label}
+                        name={item.name}
+                        rules={[{required: true, message: item.message}]}
+                        key = {i}
+                    >
+                        {item.password ? <Input.Password/> : <Input/>}
+                    </Form.Item>
+                )}
             </Modal>
         </>
     );

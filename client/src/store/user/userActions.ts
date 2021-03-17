@@ -1,4 +1,8 @@
+import {UserInterface} from "../../types/types";
+
 export const LOAD_USER_PROFILES = "LOAD_USER_PROFILES";
+export const LOGIN = "LOGIN";
+export const CREATE_ACCOUNT = "CREATE_ACCOUNT";
 
 export const loadUser = () => {
     return {
@@ -37,4 +41,12 @@ export const loadUser = () => {
                 gender:'male',
             }]
     }
+}
+
+export const login = (user: UserInterface) => {
+    return {type: LOGIN, payload: user};
+}
+
+export const createAccount = (user:UserInterface) => {
+    return {type:CREATE_ACCOUNT, payload: user};
 }

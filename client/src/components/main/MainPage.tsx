@@ -9,10 +9,8 @@ const {Content} = Layout;
 
 
 export const MainPage: React.FC = () => {
-    const dispatch = useDispatch();
-    dispatch(loadUser());
-    const user = useSelector((store: RootState) => store.user);
 
+    const user = useSelector((store: RootState) => store.user);
 
     return (
         <Content style={{height: window.innerHeight}}>

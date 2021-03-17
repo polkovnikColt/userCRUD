@@ -15,6 +15,7 @@ export const CreateAccountPage: React.FC = () => {
                 label={item.label}
                 name={item.name}
                 rules={[{required:true,message:item.message}]}
+                key = {i}
             >
                 {item.password ? <Input.Password/>: <Input/>}
             </Form.Item>

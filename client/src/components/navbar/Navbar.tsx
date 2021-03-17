@@ -1,13 +1,16 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Col, Layout, Menu, Row,Skeleton} from 'antd';
 import {getLinks} from "./additional/service";
 import {Link} from "react-router-dom";
-import {Button} from 'antd';
 import {ModalLogin} from './additional/ModalLogin';
+import {useSelector} from "react-redux";
+import {RootState} from "../../store/store";
 
 const {Header} = Layout;
 
 export const Navbar: React.FC = () => {
+
+    const user = useSelector((store:RootState) => store.user);
 
     return (
         <Header>
@@ -20,7 +23,7 @@ export const Navbar: React.FC = () => {
                 style = {{height:"inherit"}}
                 >
                     <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['0']}>
-                        {getLinks().map((item, index) =>
+                        {getLinks(user.userCredential).map((item, index) =>
                             <Menu.Item key={index}><Link to={item.href}>{item.link}</Link></Menu.Item>
                         )}
                     </Menu>

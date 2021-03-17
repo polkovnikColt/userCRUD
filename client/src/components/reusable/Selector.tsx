@@ -1,5 +1,5 @@
 import React from 'react';
-import {Modal, Select} from "antd";
+import {Select} from "antd";
 
 type SelectProps = {
     message:string
