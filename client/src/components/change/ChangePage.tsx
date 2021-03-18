@@ -17,10 +17,8 @@ export const ChangePage:React.FC = () =>{
 
     return (
         <Content style={{height: window.innerHeight}}>
-            <div style={{padding:30}}>
-            <div style={{width:"100%"}}>
-                <div style={{margin:"0 auto"}}><Selector message={''} values={getProfileNames()}/></div>
-            </div>
+            <div style={{padding:50}}>
+                   <div style={{width : "100%"}}><Selector message={''} values={getProfileNames()}/></div>
             {getFormData().map((item,i) =>
                 <Form.Item
                     label={item.label}

@@ -8,13 +8,13 @@ type SelectProps = {
 
 export const Selector: React.FC<SelectProps> = ({message,values}) => {
     return (
-        <>
-            <span style={{margin: 10}}>{message}</span>
-            <Select defaultValue="none" style={{width: 85 + "%"}}>
+        <div style={{margin: "15px auto", width: 300}}>
+            <span style={{margin: '10'}}>{message}</span>
+            <Select defaultValue="none" style={{width: "100%"}}>
                 {values.map((item,i)=>
                      <Select.Option value={item}>{item}</Select.Option>
                 )}
             </Select>
-        </>
+        </div>
     )
 }
