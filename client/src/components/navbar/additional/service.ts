@@ -5,7 +5,7 @@ export const getLinks = (user:UserInterface | null): LinkInterface[] => {
         if(user?.role === 'admin') {
             return [
                 {link: "Main", href: "/"},
-                {link: "Create account", href: "/user"},
+                {link: "Create profile", href: "/user"},
                 {link: "Change credential", href: "/change"},
                 {link: "Users", href: "/users"},
             ]
@@ -18,7 +18,6 @@ export const getLinks = (user:UserInterface | null): LinkInterface[] => {
     }
     return [
         {link: "Main", href: "/"},
-        {link: "Create account", href: "/user"},
     ]
 }
 

@@ -11,7 +11,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d3f130c-c881-4e17-bf19-07a9cac05c0a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,8 +22,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="tsconfig.json" />
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -51,6 +50,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\WebstormProjects\UserCRUD\client\src" />
       <recent name="C:\Users\User\WebstormProjects\UserCRUD\server\src\config" />
       <recent name="C:\Users\User\WebstormProjects\UserCRUD\client\src\components\navbar\additional" />
     </key>
@@ -65,7 +65,7 @@
       <updated>1615972470127</updated>
       <workItem from="1615972471345" duration="7870000" />
       <workItem from="1615980494389" duration="16024000" />
-      <workItem from="1616060145159" duration="7942000" />
+      <workItem from="1616060145159" duration="18192000" />
     </task>
     <servers />
   </component>

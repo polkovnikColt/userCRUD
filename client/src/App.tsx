@@ -6,9 +6,13 @@ import {RootState, store} from "./store/store";
 import {Navbar} from './components/navbar/Navbar';
 import {MainPage} from "./components/main/MainPage";
 import {CreateAccountPage} from "./components/create/CreateAccountPage";
-import {ProtectedRoutesPart} from "./components/reusable/ProtectedRoutesPart";
+import {ProtectedRoute} from "./components/reusable/ProtectedRoute";
+import {ChangePage} from "./components/change/ChangePage";
+import {UsersPage} from "./components/users/UsersPage";
 
 const App: React.FC = () => {
+
+    const user = useSelector((store:RootState) => store.user);
 
     return (
         <HashRouter>
@@ -17,8 +21,18 @@ const App: React.FC = () => {
                 <Navbar/>
                 <Switch>
                     <Route path={'/'} component={MainPage} exact={true}/>
-                    <Route path={'/user'} component={CreateAccountPage}/>
-                    <ProtectedRoutesPart/>
+                    <ProtectedRoute
+                        component={CreateAccountPage}
+                        path={'/user'}
+                        isAuth={!!user} />
+                    <ProtectedRoute
+                        component={ChangePage}
+                        path={'/change'}
+                        isAuth={!!user}/>
+                    <ProtectedRoute
+                        component={UsersPage}
+                        path={'/users'}
+                        isAuth={user.userCredential?.role === 'admin'}/>
                 </Switch>
                 </Provider>
             </Layout>

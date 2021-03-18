@@ -1,6 +1,7 @@
 import {Reducer} from "redux";
 import {userState} from "../store";
-import {CREATE_ACCOUNT, LOAD_USER_PROFILES, LOGIN} from "./userActions";
+import {CHANGE_CREDENTIAL, CREATE_ACCOUNT, LOAD_USER_PROFILES, LOGIN} from "./userActions";
+import {ProfileInterface} from "../../types/types";
 
 
 const initState:userState = {
@@ -16,6 +17,14 @@ export const userReducer:Reducer = (state = initState, action) => {
             return {...state, userCredential: action.payload};
         case CREATE_ACCOUNT:
             return {...state, userProfiles: [...state.userProfiles, action.payload]}
-        default: return state;
+        case CHANGE_CREDENTIAL:
+            return {...state, userCredential: state.userProfiles.map((profile:ProfileInterface) => {
+                 if (profile.name === action.payload.name){
+                    return {...profile, profile: action.payload}
+                 }
+
+                })}
+
+            return state;
     }
 }

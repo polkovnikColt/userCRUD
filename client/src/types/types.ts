@@ -3,15 +3,22 @@ export interface LinkInterface {
     href: string
 }
 
-export interface UserInterface {
-    name: string,
-    email: string,
-    password: string,
-    age: number,
-    city: string,
-    birthday: string,
-    gender: 'male' | 'female',
-    role: 'user' | 'admin'
+export interface ProfileInterface {
+    name?: string,
+    email?: string | undefined,
+    password?: string | undefined,
+    age?: number,
+    city?: string,
+    birthday?: string,
+    gender?: string | undefined,
+    role?: string | undefined
+}
+
+export interface UserInterface{
+    email:string,
+    password:string,
+    token:string,
+    role: string,
 }
 
 export interface FormDataInterface{
