@@ -1,14 +1,27 @@
 import {Connection,createConnection} from 'typeorm';
+import {User} from '../user/entity/user.entity';
+import {Profile} from '../profile/entity/profile.entity'
 
-export const initDB = async ():Promise<boolean> => {
-    const conn:Connection = await createConnection({
-        "type": "postgres",
-        "host": "localhost",
-        "port": 5432,
-        "username": "postgres",
-        "password": "root",
-        "database": "user_crud"
-    });
+type DBConnection = {
+    error: Error
+}
 
-   return conn.isConnected;
+export const initDB = async ():Promise<DBConnection> => {
+
+    try {
+        const conn:Connection = await createConnection({
+            type: "postgres",
+            host: "localhost",
+            port: 5432,
+            username: "postgres",
+            password: "root",
+            database: "user_crud",
+            entities: [User,Profile],
+            synchronize: true,
+        });
+
+    } catch (e) {
+        return {error: e};
+    }
+   return {error: null};
 }

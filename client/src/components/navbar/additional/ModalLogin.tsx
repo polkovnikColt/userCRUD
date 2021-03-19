@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Modal, Button, Form, Input} from 'antd';
-import {getFormData} from "./service";
+import {getFormData, validateCredential} from "./service";
 import {useDispatch} from "react-redux";
 import {loadUser, login} from "../../../store/user/userActions";
 import {FormItem} from "../../reusable/FormItem";
@@ -14,7 +14,7 @@ export const ModalLogin = () => {
         email: '',
         password: '',
         token:'token',
-        role: 'admin'
+        role: 'user'
     });
 
     const showModal = () => {
@@ -26,12 +26,16 @@ export const ModalLogin = () => {
     }
 
     const handleOk = () => {
+        if(validateCredential(credential)){
+            alert('All fields must be filled');
+            return;
+        }
         setConfirmLoading(true);
         setTimeout(() => {
             setVisible(false);
             setConfirmLoading(false);
             dispatch(login(credential));
-            dispatch(loadUser());
+            // dispatch(loadUser());
         }, 2000);
     };
 

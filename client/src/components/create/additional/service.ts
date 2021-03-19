@@ -21,12 +21,6 @@ export const getFormData = (): FormDataInterface[] => {
             password: false
         },
         {
-            label: "City",
-            name: "city",
-            message: "Enter your city",
-            password: false
-        },
-        {
             label: "Birthday",
             name: "birthday",
             message: "Enter your birthday",

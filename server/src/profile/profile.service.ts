@@ -1,21 +1,38 @@
 import { Injectable } from '@nestjs/common';
+import {Profile} from './entity/profile.entity';
+import {getManager} from "typeorm/index";
+import {ProfileInterface} from "../types/types";
 
 @Injectable()
 export class ProfileService {
+    private readonly manager;
 
-    getUserById(id:string): string {
-        return `User ${id}`;
+    constructor() {
+        this.manager = getManager();
     }
 
-    getAllUsers():string {
-        return "all";
+    async getProfileByName(name:string): Promise<ProfileInterface> {
+       return await this.manager.findOne({name:name});
     }
 
-    deleteUser(id:string):string {
-        return `Deleted user ${id}`;
+    async getAllProfiles():Promise<ProfileInterface> {
+        return await this.manager
+            .createQueryBuilder()
+            .select('profile')
+            .from(Profile,'profile')
+            .getMany();
     }
 
-    updateProfileCredential(id:string):string{
-        return `Updated user credential ${id}`;
+    async createProfile(body:Body):Promise<ProfileInterface>{
+        return await this.manager.insert(Profile, body)
+    }
+
+    async deleteProfile(name:string):Promise<ProfileInterface> {
+        return this.manager
+            .delete(Profile,{name:name});
+    }
+
+    async updateProfileCredential(name:string, body: Body):Promise<ProfileInterface>{
+        return this.manager.update(Profile, {name:name}, body);
     }
 }

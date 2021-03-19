@@ -1,7 +1,8 @@
-import {Column, PrimaryGeneratedColumn, Entity} from "typeorm";
+import {Column, PrimaryGeneratedColumn, Entity,ManyToOne} from "typeorm";
+import {User} from "../../user/entity/user.entity";
 
 @Entity()
-export class ProfileEntity {
+export class Profile {
     @PrimaryGeneratedColumn()
     id: number
 
@@ -18,9 +19,11 @@ export class ProfileEntity {
     birthday: string
 
     @Column()
-    role: 'user' | 'admin'
+    role: string
 
     @Column()
-    gender: 'male' | 'female'
+    gender: string
 
+    @ManyToOne(() => User, user => user.id)
+    user_id: number
 }

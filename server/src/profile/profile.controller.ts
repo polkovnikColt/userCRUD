@@ -1,28 +1,34 @@
-import {Controller, Delete, Get, Param, Put} from '@nestjs/common';
+import {Controller, Delete, Get, Param, Post, Put, Req} from '@nestjs/common';
 import {ProfileService} from './profile.service';
+import {ProfileInterface} from "../types/types";
 
-@Controller()
+@Controller('profile')
 export class ProfileController {
     constructor(private readonly userService: ProfileService) {
     }
 
     @Get(':id')
-    getUserById(@Param('id') id): string {
-        return this.userService.getUserById(id);
+    getUserById(@Param('id') name): Promise<ProfileInterface> {
+        return this.userService.getProfileByName(name);
     }
 
     @Get()
-    getAllUsers(): string {
-        return this.userService.getAllUsers();
+    getAllUsers(): Promise<ProfileInterface> {
+        return this.userService.getAllProfiles();
+    }
+
+    @Post()
+    createProfile(@Req() req):Promise<ProfileInterface>{
+        return this.userService.createProfile(req.body);
     }
 
     @Delete(':id')
-    deleteUser(@Param('id') id): string {
-        return this.userService.deleteUser(id);
+    deleteUser(@Param('id') name): Promise<ProfileInterface> {
+        return this.userService.deleteProfile(name);
     }
 
     @Put(':id')
-    updateUserCredential(@Param('id') id): string {
-        return this.userService.updateProfileCredential(id);
+    updateUserCredential(@Param('id') name, @Req() req): Promise<ProfileInterface> {
+        return this.userService.updateProfileCredential(name,req.body);
     }
 }

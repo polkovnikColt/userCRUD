@@ -1,4 +1,5 @@
-import {Entity,PrimaryGeneratedColumn, Column} from 'typeorm';
+import {Entity,PrimaryGeneratedColumn, Column, OneToMany} from 'typeorm';
+import {Profile} from '../../profile/entity/profile.entity'
 
 @Entity()
 export class User{
@@ -10,4 +11,10 @@ export class User{
 
     @Column()
     password:string
+
+    @Column({default:'user'})
+    role:string
+
+    @OneToMany(()=> Profile, profile => profile.id)
+    profile_id: number[]
 }

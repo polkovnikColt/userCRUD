@@ -1,4 +1,4 @@
-import {LinkInterface, FormDataInterface, UserInterface} from "../../../types/types";
+import {LinkInterface, FormDataInterface, UserInterface, ProfileInterface} from "../../../types/types";
 
 export const getLinks = (user:UserInterface | null): LinkInterface[] => {
     if(user) {
@@ -34,4 +34,8 @@ export const getFormData = (): FormDataInterface[] => {
             message: "Enter your password",
             password: true
         }]
+}
+
+export const validateCredential = (credential: UserInterface): boolean => {
+    return credential.password === '' || credential.password === '';
 }

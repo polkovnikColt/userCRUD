@@ -16,13 +16,13 @@ export const CreateAccountPage: React.FC = () => {
     const user = useSelector((store:RootState) => store.user);
 
     const [credential, setCredential] = useState({
-        name:'',
+        name:'-',
         email: user.userCredential?.email ,
         password: user.userCredential?.password,
-        city:'',
-        birthday:'',
+        city:'-',
+        birthday:'-',
         age:0,
-        gender: '',
+        gender: '-',
         role: 'user'
     });
 
@@ -45,14 +45,12 @@ export const CreateAccountPage: React.FC = () => {
                      name = {"gender"}
                      changeHandler= {handleChange}/>
            </div>
-           <div>
                <Button
                style ={{margin:"0 auto"}}
                onClick = {handleSubmit}
                type="primary">
                Submit
            </Button>
-           </div>
        </Content>
     )
 }
