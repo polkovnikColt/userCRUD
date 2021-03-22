@@ -1,4 +1,4 @@
-import {LinkInterface, FormDataInterface, UserInterface, ProfileInterface} from "../../../types/types";
+import {LinkInterface, FormDataInterface, UserInterface} from "../../../types/types";
 
 export const getLinks = (user:UserInterface | null): LinkInterface[] => {
     if(user) {

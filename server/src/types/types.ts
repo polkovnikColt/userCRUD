@@ -14,3 +14,8 @@ export interface ProfileInterface {
     gender: 'male' | 'female',
     role: 'user' | 'admin'
 }
+
+export type TokenType = {
+    token?: string,
+    message?: string
+}

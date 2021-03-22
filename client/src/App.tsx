@@ -24,11 +24,11 @@ const App: React.FC = () => {
                     <ProtectedRoute
                         component={CreateAccountPage}
                         path={'/user'}
-                        isAuth={!!user} />
+                        isAuth={!!user.userCredential} />
                     <ProtectedRoute
                         component={ChangePage}
                         path={'/change'}
-                        isAuth={!!user}/>
+                        isAuth={!!user.userCredential}/>
                     <ProtectedRoute
                         component={UsersPage}
                         path={'/users'}

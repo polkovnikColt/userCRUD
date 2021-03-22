@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Layout, Form, Input, Button} from "antd";
+import {Layout, Button} from "antd";
 import {Selector} from "../reusable/Selector";
 import {getFormData} from "./additional/service";
 import {FormItem} from "../reusable/FormItem";
@@ -13,15 +13,15 @@ const {Content} = Layout;
 export const CreateAccountPage: React.FC = () => {
 
     const dispatch = useDispatch();
-    const user = useSelector((store:RootState) => store.user);
+    const user = useSelector((store: RootState) => store.user);
 
     const [credential, setCredential] = useState({
-        name:'-',
-        email: user.userCredential?.email ,
+        name: '-',
+        email: user.userCredential?.email,
         password: user.userCredential?.password,
-        city:'-',
-        birthday:'-',
-        age:0,
+        city: '-',
+        birthday: '-',
+        age: 0,
         gender: '-',
         role: 'user'
     });
@@ -35,22 +35,23 @@ export const CreateAccountPage: React.FC = () => {
     }
 
     return (
-       <Content style={{height: window.innerHeight}}>
-           <div style={{padding:30}}>
-           {getFormData().map((item,index) =>
-           <FormItem formData={item} key={index} changeHandler={handleChange}/>
-           ) }
-           <Selector message="Gender"
-                     values={["male", "female"]}
-                     name = {"gender"}
-                     changeHandler= {handleChange}/>
-           </div>
-               <Button
-               style ={{margin:"0 auto"}}
-               onClick = {handleSubmit}
-               type="primary">
-               Submit
-           </Button>
-       </Content>
+        <Content style={{height: window.innerHeight}}>
+            <div
+                style={{padding: 30, margin: "0 auto"}}>
+                {getFormData().map((item, index) =>
+                    <FormItem formData={item} key={index} changeHandler={handleChange}/>
+                )}
+                <Selector message="Gender"
+                          values={["male", "female"]}
+                          name={"gender"}
+                          changeHandler={handleChange}/>
+            </div>
+            <Button
+                style={{margin: "0 auto"}}
+                onClick={handleSubmit}
+                type="primary">
+                Submit
+            </Button>
+        </Content>
     )
 }

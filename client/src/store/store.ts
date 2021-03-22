@@ -3,13 +3,13 @@ import thunk from 'redux-thunk';
 import {userReducer} from "./user/userReducer";
 import {ProfileInterface, UserInterface} from "../types/types";
 
-export type userState = {
+export type UserState = {
     userCredential: UserInterface | null,
     userProfiles: ProfileInterface[]
 }
 
 export interface RootState {
-    user: userState,
+    user: UserState,
 }
 
 export const store = createStore(

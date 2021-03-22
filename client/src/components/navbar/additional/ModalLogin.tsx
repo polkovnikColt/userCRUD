@@ -1,19 +1,18 @@
 import React, {useState} from 'react';
-import {Modal, Button, Form, Input} from 'antd';
+import {Modal, Button, Checkbox} from 'antd';
 import {getFormData, validateCredential} from "./service";
 import {useDispatch} from "react-redux";
-import {loadUser, login} from "../../../store/user/userActions";
+import {login,registration} from "../../../store/user/userActions";
 import {FormItem} from "../../reusable/FormItem";
 
 export const ModalLogin = () => {
 
     const dispatch = useDispatch();
     const [visible, setVisible] = useState(false);
-    const [confirmLoading, setConfirmLoading] = useState(false);
+    const [registr, setRegistr] = useState(false);
     const [credential, setCredential] = useState({
         email: '',
         password: '',
-        token:'token',
         role: 'user'
     });
 
@@ -26,17 +25,18 @@ export const ModalLogin = () => {
     }
 
     const handleOk = () => {
-        if(validateCredential(credential)){
+        if (validateCredential(credential)) {
             alert('All fields must be filled');
             return;
         }
-        setConfirmLoading(true);
-        setTimeout(() => {
-            setVisible(false);
-            setConfirmLoading(false);
+        if (registr) {
+            alert("registr");
+            dispatch(registration(credential));
+            return;
+        } else {
             dispatch(login(credential));
-            // dispatch(loadUser());
-        }, 2000);
+        }
+        setVisible(false);
     };
 
     const handleCancel = () => {
@@ -52,7 +52,6 @@ export const ModalLogin = () => {
                 title="Title"
                 visible={visible}
                 onOk={handleOk}
-                confirmLoading={confirmLoading}
                 onCancel={handleCancel}
             >
                 {getFormData().map((item, i) =>
@@ -61,6 +60,7 @@ export const ModalLogin = () => {
                         key={i}
                         changeHandler={handleChange}/>
                 )}
+                <Checkbox onChange={() => setRegistr(true)}>Registration</Checkbox>
             </Modal>
         </>
     );

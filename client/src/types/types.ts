@@ -17,7 +17,6 @@ export interface ProfileInterface {
 export interface UserInterface{
     email:string,
     password:string,
-    token:string,
     role: string,
 }
 
@@ -25,5 +24,6 @@ export interface FormDataInterface{
     label:string,
     name:string,
     message:string,
-    password: boolean
+    password?: boolean,
+    datePicker?: boolean
 }
