@@ -10,7 +10,7 @@ export interface ProfileInterface {
     name?: string,
     email?: string | undefined,
     password?: string | undefined,
-    age?: number,
+    age: number,
     city?: string,
     birthday?: string,
     gender?: string | undefined,

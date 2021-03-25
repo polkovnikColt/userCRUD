@@ -6,6 +6,8 @@ import {ProfileInterface, UserInterface} from "../types/types";
 export type UserState = {
     userCredential: UserInterface | null,
     userProfiles: ProfileInterface[]
+    allProfiles: ProfileInterface[]
+    allUsers:[]
 }
 
 export interface RootState {

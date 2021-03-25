@@ -9,7 +9,7 @@ export class UserController {
 
     @UseGuards(AuthGuard('jwt'))
     @Get(':id')
-    getUserById(@Param('id') email): Promise<UserInterface> {
+    getUserByEmail(@Param('id') email): Promise<UserInterface> {
         return this.userService.getUserByName(email);
     }
 

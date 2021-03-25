@@ -24,7 +24,7 @@ export const CreateAccountPage: React.FC = () => {
         birthday: '-',
         age: 0,
         gender: '-',
-        role: 'user'
+        role: user.userCredential?.role
     });
 
     const handleChange = (name: string, value: string) => {

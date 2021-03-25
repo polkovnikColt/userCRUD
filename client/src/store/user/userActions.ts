@@ -3,10 +3,9 @@ import {Dispatch} from "react";
 import axios from '../../axios/initAxios'
 import {
     ChangeCredentialType,
-    CreateAccountType, DeleteProfileType,
-    LoadProfilesType,
-    LoginAction,
-    RegistrationType
+    CreateAccountType, DeleteProfileType, LoadAllProfilesType, LoadAllUsersType,
+    LoadProfilesType, LoginType,
+    RegistrationType, UpdateToAdminType
 } from "./userActionsTypes";
 
 export const LOAD_USER_PROFILES = "LOAD_USER_PROFILES";
@@ -16,24 +15,51 @@ export const CHANGE_CREDENTIAL = "CHANGE_CREDENTIAL";
 export const REGISTRATION = "REGISTRATION";
 export const DELETE_PROFILE = "DELETE_PROFILE";
 export const UNLOG = "UNLOG";
+export const LOGIN_ON_LOAD = "LOGIN_ON_LOAD";
+export const LOAD_ALL_PROFILES = "LOAD_ALL_PROFILES";
+export const LOAD_ALL_USERS = "LOAD_ALL_USERS";
+export const UPDATE_TO_ADMIN = "UPDATE_TO_ADMIN";
 
 export const loadProfiles = (user: UserInterface | null) => {
     return async (dispatch: Dispatch<LoadProfilesType>) => {
-        console.log(localStorage.getItem('token'));
         try {
-            const response = await axios.get(`/profile/${user?.id}`);
+            const response = await axios.get(`/profile/userProfile/${user?.id}`);
             dispatch({
                 type: LOAD_USER_PROFILES,
                 payload: response.data
             })
         } catch (e) {
+            alert("Cannot load profiles")
+        }
+    }
+}
 
+export const loadAllUsers = () => {
+    return async (dispatch: Dispatch<LoadAllUsersType>) => {
+        const response = await axios.get('/user');
+        dispatch({
+            type: LOAD_ALL_USERS,
+            payload: response.data
+        })
+    }
+}
+
+export const loginOnLoad = () => {
+    return async (dispatch: Dispatch<LoginType>) => {
+        try {
+            const response = await axios.get('/login/load');
+            dispatch({
+                type: LOGIN,
+                payload: response.data.user
+            })
+        } catch (e) {
+            alert("Please login");
         }
     }
 }
 
 export const unlog = () => {
-    localStorage.clear();
+    localStorage.removeItem('token');
     return {
         type: UNLOG,
         payload: null
@@ -41,7 +67,7 @@ export const unlog = () => {
 }
 
 export const login = (user: UserInterface) => {
-    return async (dispatch: Dispatch<LoginAction>) => {
+    return async (dispatch: Dispatch<LoginType>) => {
         try {
             const response = await axios.post('/login', user);
             localStorage.setItem("token", response.data.token);
@@ -53,6 +79,16 @@ export const login = (user: UserInterface) => {
             alert("No such user found");
         }
     };
+}
+
+export const loadAllProfiles = () => {
+    return async (dispatch: Dispatch<LoadAllProfilesType>) => {
+        const response = await axios.get('profile/all');
+        dispatch({
+            type: LOAD_ALL_PROFILES,
+            payload: response.data
+        })
+    }
 }
 
 export const registration = (credential: UserInterface) => {
@@ -74,7 +110,6 @@ export const registration = (credential: UserInterface) => {
 
 export const deleteProfile = (id: number) => {
     return async (dispatch: Dispatch<DeleteProfileType>) => {
-        console.log(id)
         const response = await axios.delete(`/profile/${id}`);
         if (response.status === 200) {
             alert("Profile was deleted");
@@ -86,12 +121,21 @@ export const deleteProfile = (id: number) => {
     }
 }
 
+export const updateToAdmin = (id: number,) => {
+    return async (dispatch: Dispatch<UpdateToAdminType>) => {
+        const response = await axios.put(`user/${id}`, {role: 'admin'});
+        dispatch({
+            type: UPDATE_TO_ADMIN,
+            payload: {id:id,role:'admin'}
+        })
+    }
+}
+
 export const changeCredential = (credential: ProfileInterface) => {
     return async (dispatch: Dispatch<ChangeCredentialType>) => {
         try {
             const response = await axios.put(`/profile/${credential.id}`,
                 credential);
-            console.log(response)
             if (response.status === 200) {
                 alert("Changes has been committed");
             }

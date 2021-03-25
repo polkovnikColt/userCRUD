@@ -8,11 +8,11 @@ export class LoginOnLoadMiddleware implements NestMiddleware {
     constructor(private readonly jwt: JwtService) {
     }
 
-    async use(req: Request, res: Response, next: NextFunction) {
-        const token = req.headers.authorization.split(' ')[1];
+     use(req: Request, res: Response, next: NextFunction) {
+        const token:string = req.headers.authorization.split(' ')[1];
         try {
             const decode = this.jwt.verify(token);
-            console.log(decode);
+            req.body = decode.user;
         } catch (e) {
             throw new UnauthorizedException();
         }

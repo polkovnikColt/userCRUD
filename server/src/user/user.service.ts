@@ -29,7 +29,8 @@ export class UserService {
         return await this.manager.delete(User, {email: email});
     }
 
-    async updateUserCredential(email: string, body: Body): Promise<UserInterface> {
-        return await this.manager.update(User, {email: email}, body);
+    async updateUserCredential(id: number, body: Body): Promise<UserInterface> {
+       const user =  await this.manager.update(User, {id:id}, body);
+       return user;
     }
 }

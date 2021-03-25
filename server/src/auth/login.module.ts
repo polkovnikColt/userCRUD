@@ -6,6 +6,7 @@ import {ConfigModule, ConfigService} from '@nestjs/config';
 import {JwtStrategy} from './jwt/jwt.strategy';
 import {LoginService} from "./login.service";
 import {LoginMiddleware} from "../guard-and-middleware/middleware/login.middleware";
+import {LoginOnLoadMiddleware} from "../guard-and-middleware/middleware/loginOnLoad.middleware";
 
 @Module({
     imports: [
@@ -27,7 +28,14 @@ import {LoginMiddleware} from "../guard-and-middleware/middleware/login.middlewa
 export class LoginModule implements NestModule {
     configure(consumer: MiddlewareConsumer): void {
         consumer
+            .apply(LoginOnLoadMiddleware)
+            .forRoutes({path:"login/load",method: RequestMethod.GET});
+        consumer
             .apply(LoginMiddleware)
-            .forRoutes(LoginController);
+            .forRoutes({path:'login', method: RequestMethod.POST});
+        consumer
+            .apply(LoginMiddleware)
+            .forRoutes({path:'login/registration', method: RequestMethod.POST});
+
     }
 }

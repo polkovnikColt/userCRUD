@@ -27,9 +27,9 @@ export class ProfileService {
             .getMany();
     }
 
-    async createProfile(body: Body): Promise<ProfileInterface> {
-        const response = await this.manager.insert(Profile, body);
-        return response;
+    async createProfile(body: ProfileInterface): Promise<ProfileInterface> {
+        await this.manager.insert(Profile, body);
+        return body;
     }
 
     async deleteProfile(id: string): Promise<ProfileInterface> {

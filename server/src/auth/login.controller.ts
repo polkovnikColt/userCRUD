@@ -1,4 +1,4 @@
-import {Controller, HttpCode, HttpStatus, Post, Req, Res} from "@nestjs/common";
+import {Controller, Get, HttpCode, HttpStatus, Post, Req} from "@nestjs/common";
 import {LoginResponseType} from "../types/types";
 import {LoginService} from "./login.service";
 
@@ -14,7 +14,7 @@ export class LoginController {
         return this.loginService.login(req.body);
     }
 
-    @Post('load')
+    @Get('load')
     @HttpCode(HttpStatus.OK)
     loginOnLoad(@Req() req):Promise<LoginResponseType>{
         return this.loginService.login(req.body);

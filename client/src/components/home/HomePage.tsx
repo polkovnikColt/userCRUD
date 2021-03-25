@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Button, Checkbox, Layout} from "antd";
 import {getFormData, validateCredential} from "../navbar/additional/service";
 import {FormItem} from "../reusable/FormItem";
-import {loadProfiles, login, registration} from "../../store/user/userActions";
+import {loadProfiles, login, loginOnLoad, registration} from "../../store/user/userActions";
 import {useDispatch} from "react-redux";
 
 const {Content} = Layout;
@@ -19,7 +19,7 @@ export const HomePage: React.FC = () => {
     });
 
     useEffect(() => {
-
+        dispatch(loginOnLoad());
     },[])
 
     const handleChange = (name: string, value: string) => {
