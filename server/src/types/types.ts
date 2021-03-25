@@ -3,19 +3,23 @@ export interface UserInterface {
     id:number,
     email:string,
     password:string,
+    role:string
 }
 export interface ProfileInterface {
-    name: string,
-    email: string,
-    password: string,
-    age: number,
-    city: string,
-    birthday: string,
-    gender: 'male' | 'female',
-    role: 'user' | 'admin'
+    user: number
+    name?: string,
+    email?: string | undefined,
+    password?: string | undefined,
+    age?: number,
+    city?: string,
+    birthday?: string,
+    gender?: string | undefined,
+    role?: string | undefined
 }
 
-export type TokenType = {
+export type LoginResponseType = {
     token?: string,
-    message?: string
+    user?: UserInterface,
+    loginError?: string
+    registrationError?:string
 }

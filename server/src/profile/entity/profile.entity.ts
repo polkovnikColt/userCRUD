@@ -7,6 +7,18 @@ export class Profile {
     id: number
 
     @Column()
+    name:string
+
+    @Column()
+    age:number
+
+    @Column()
+    email:string
+
+    @Column()
+    password:string
+
+    @Column()
     city: string
 
     @Column()
@@ -14,6 +26,9 @@ export class Profile {
 
     @Column()
     gender: string
+
+    @Column()
+    role:string
 
     @ManyToOne(() => User, user => user.id)
     user: number

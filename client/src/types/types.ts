@@ -4,7 +4,9 @@ export interface LinkInterface {
 }
 
 export interface ProfileInterface {
-    name?: string,
+    id: number
+    user:number | undefined,
+    name?: string | undefined,
     email?: string | undefined,
     password?: string | undefined,
     age?: number,
@@ -15,6 +17,7 @@ export interface ProfileInterface {
 }
 
 export interface UserInterface{
+    id:number,
     email:string,
     password:string,
     role: string,
@@ -27,3 +30,4 @@ export interface FormDataInterface{
     password?: boolean,
     datePicker?: boolean
 }
+

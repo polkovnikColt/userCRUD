@@ -1,5 +1,15 @@
 import axios from "axios";
 
-export default axios.create({
-    headers: {"Authorization" : localStorage.getItem('token') || ''}
-})
+const instance = axios.create({
+    headers: {
+        'Content-Type': 'application/json'
+    }
+});
+
+instance.interceptors.request.use(function (config) {
+    const token = localStorage.getItem('token');
+    config.headers['Authorization'] = token ? `Bearer ${token}` : '';
+    return config;
+});
+
+export default instance;

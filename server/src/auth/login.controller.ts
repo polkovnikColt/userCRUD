@@ -1,20 +1,28 @@
-import {Controller, Post, Req} from "@nestjs/common";
-import {TokenType, UserInterface} from "../types/types";
+import {Controller, HttpCode, HttpStatus, Post, Req, Res} from "@nestjs/common";
+import {LoginResponseType} from "../types/types";
 import {LoginService} from "./login.service";
 
 @Controller('login')
-export class LoginController{
+export class LoginController {
 
     constructor(private readonly loginService: LoginService) {
     }
 
     @Post()
-    login(@Req() req):Promise<TokenType>{
+    @HttpCode(HttpStatus.OK)
+    login(@Req() req): Promise<LoginResponseType> {
+        return this.loginService.login(req.body);
+    }
+
+    @Post('load')
+    @HttpCode(HttpStatus.OK)
+    loginOnLoad(@Req() req):Promise<LoginResponseType>{
         return this.loginService.login(req.body);
     }
 
     @Post('registration')
-    registration(@Req() req): Promise<TokenType>{
+    @HttpCode(HttpStatus.CREATED)
+    registration(@Req() req): Promise<LoginResponseType> {
         return this.loginService.registration(req.body);
     }
 }

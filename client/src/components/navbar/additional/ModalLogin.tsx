@@ -11,8 +11,10 @@ export const ModalLogin = () => {
     const [visible, setVisible] = useState(false);
     const [registr, setRegistr] = useState(false);
     const [credential, setCredential] = useState({
+        id:0,
         email: '',
         password: '',
+        token:'',
         role: 'user'
     });
 
@@ -30,9 +32,7 @@ export const ModalLogin = () => {
             return;
         }
         if (registr) {
-            alert("registr");
             dispatch(registration(credential));
-            return;
         } else {
             dispatch(login(credential));
         }

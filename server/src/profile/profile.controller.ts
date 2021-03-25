@@ -10,13 +10,13 @@ export class ProfileController {
 
     @UseGuards(AuthGuard('jwt'))
     @Get(':id')
-    getUserById(@Param('id') name): Promise<ProfileInterface> {
-        return this.userService.getProfileByName(name);
+    getUserProfilesById(@Param('id') id): Promise<ProfileInterface[]> {
+        return this.userService.getProfileById(id);
     }
 
     @UseGuards(AuthGuard('jwt'))
     @Get()
-    getAllUsers(): Promise<ProfileInterface> {
+    getAllProfiles(): Promise<ProfileInterface> {
         return this.userService.getAllProfiles();
     }
 
@@ -28,13 +28,13 @@ export class ProfileController {
 
     @UseGuards(AuthGuard('jwt'))
     @Delete(':id')
-    deleteUser(@Param('id') name): Promise<ProfileInterface> {
-        return this.userService.deleteProfile(name);
+    deleteUser(@Param('id') id): Promise<ProfileInterface> {
+        return this.userService.deleteProfile(id);
     }
 
     @UseGuards(AuthGuard('jwt'))
     @Put(':id')
-    updateUserCredential(@Param('id') name, @Req() req): Promise<ProfileInterface> {
-        return this.userService.updateProfileCredential(name,req.body);
+    updateUserCredential(@Param('id') id, @Req() req): Promise<ProfileInterface> {
+        return this.userService.updateProfileCredential(id,req.body);
     }
 }

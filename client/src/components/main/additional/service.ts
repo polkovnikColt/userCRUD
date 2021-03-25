@@ -1,3 +1,6 @@
+import {ProfileInterface} from "../../../types/types";
+import {Key} from "antd/es/table/interface";
+
 interface column {
     title: string,
     dataIndex: string,
@@ -46,3 +49,7 @@ export const columns: column[] = [
         key: 'birthday',
     },
 ];
+
+export const getProfilesName = (profiles:ProfileInterface[]):Key[]  => {
+    return profiles.map(profile => profile.name) as Key[];
+}

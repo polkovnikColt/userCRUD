@@ -22,8 +22,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="tsconfig.json" />
-        <option value="TypeScript JSX File" />
         <option value="package.json" />
+        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
       </list>
     </option>
@@ -40,7 +40,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../booksharing" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../api-site-project" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -51,11 +51,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\WebstormProjects\UserCRUD\server\src\guard-and-middleware\middleware" />
+      <recent name="C:\Users\User\WebstormProjects\UserCRUD\server\src\guard-and-middleware" />
+      <recent name="C:\Users\User\WebstormProjects\UserCRUD\client\src\components" />
       <recent name="C:\Users\User\WebstormProjects\UserCRUD\server" />
       <recent name="C:\Users\User\WebstormProjects\UserCRUD\server\src\auth\guard-config" />
-      <recent name="C:\Users\User\WebstormProjects\UserCRUD\server\src\login" />
-      <recent name="C:\Users\User\WebstormProjects\UserCRUD\client\src" />
-      <recent name="C:\Users\User\WebstormProjects\UserCRUD\server\src\config" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -69,7 +69,10 @@
       <workItem from="1615972471345" duration="7870000" />
       <workItem from="1615980494389" duration="16024000" />
       <workItem from="1616060145159" duration="43063000" />
-      <workItem from="1616401070226" duration="17773000" />
+      <workItem from="1616401070226" duration="22396000" />
+      <workItem from="1616488846611" duration="22876000" />
+      <workItem from="1616574978546" duration="28246000" />
+      <workItem from="1616662494339" duration="6031000" />
     </task>
     <servers />
   </component>
@@ -100,13 +103,17 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="371" y="108" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.720@0.0.1280.720" timestamp="1616072422474" />
-    <state x="421" y="116" key="FileChooserDialogImpl" timestamp="1616062564406">
+    <state x="310" y="139" key="EditFileWatcherDialog" timestamp="1616513773376">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="421" y="116" key="FileChooserDialogImpl/0.0.1280.720@0.0.1280.720" timestamp="1616062564406" />
-    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1616420469513">
+    <state x="310" y="139" key="EditFileWatcherDialog/0.0.1280.720@0.0.1280.720" timestamp="1616513773376" />
+    <state x="421" y="116" key="FileChooserDialogImpl" timestamp="1616595443505">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1280.720@0.0.1280.720" timestamp="1616420469513" />
+    <state x="421" y="116" key="FileChooserDialogImpl/0.0.1280.720@0.0.1280.720" timestamp="1616595443505" />
+    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1616586217259">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1280.720@0.0.1280.720" timestamp="1616586217259" />
   </component>
 </project>

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import {Injectable} from '@nestjs/common';
 import {Profile} from './entity/profile.entity';
 import {getManager} from "typeorm/index";
 import {ProfileInterface} from "../types/types";
@@ -11,28 +11,34 @@ export class ProfileService {
         this.manager = getManager();
     }
 
-    async getProfileByName(name:string): Promise<ProfileInterface> {
-       return await this.manager.findOne({name:name});
+    async getProfileById(id: string): Promise<ProfileInterface[]> {
+        return await this.manager.find(Profile, {
+            where: {
+                user: id
+            }
+        });
     }
 
-    async getAllProfiles():Promise<ProfileInterface> {
+    async getAllProfiles(): Promise<ProfileInterface> {
         return await this.manager
             .createQueryBuilder()
             .select('profile')
-            .from(Profile,'profile')
+            .from(Profile, 'profile')
             .getMany();
     }
 
-    async createProfile(body:Body):Promise<ProfileInterface>{
-        return await this.manager.insert(Profile, body)
+    async createProfile(body: Body): Promise<ProfileInterface> {
+        const response = await this.manager.insert(Profile, body);
+        return response;
     }
 
-    async deleteProfile(name:string):Promise<ProfileInterface> {
+    async deleteProfile(id: string): Promise<ProfileInterface> {
         return this.manager
-            .delete(Profile,{name:name});
+            .delete(Profile, {id: id});
     }
 
-    async updateProfileCredential(name:string, body: Body):Promise<ProfileInterface>{
-        return this.manager.update(Profile, {name:name}, body);
+    async updateProfileCredential(id: string, body: Body): Promise<ProfileInterface> {
+        return this.manager
+            .update(Profile, {id: id}, body);
     }
 }
