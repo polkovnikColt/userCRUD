@@ -25,8 +25,8 @@ export class UserService {
     }
 
 
-    async deleteUser(email: string): Promise<UserInterface> {
-        return await this.manager.delete(User, {email: email});
+    async deleteUser(id: number): Promise<UserInterface> {
+        return await this.manager.delete(User, {id: id});
     }
 
     async updateUserCredential(id: number, body: Body): Promise<UserInterface> {

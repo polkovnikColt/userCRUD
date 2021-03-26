@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Checkbox, Layout} from "antd";
 import {getFormData, validateCredential} from "../navbar/additional/service";
-import {FormItem} from "../reusable/FormItem";
-import {loadProfiles, login, loginOnLoad, registration} from "../../store/user/userActions";
+import {FormItem} from "../reusable/items/FormItem";
+import {login, loginOnLoad, registration} from "../../store/user/userActions";
 import {useDispatch} from "react-redux";
 
 const {Content} = Layout;

@@ -7,7 +7,6 @@ type DBConnection = {
 }
 
 export const initDB = async ():Promise<DBConnection> => {
-
     try {
         const conn:Connection = await createConnection({
             type: "postgres",

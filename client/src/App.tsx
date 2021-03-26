@@ -6,13 +6,11 @@ import {RootState, store, UserState} from "./store/store";
 import {Navbar} from './components/navbar/Navbar';
 import {MainPage} from "./components/main/MainPage";
 import {CreateAccountPage} from "./components/create/CreateAccountPage";
-import {ProtectedRoute} from "./components/reusable/ProtectedRoute";
+import {ProtectedRoute} from "./components/reusable/routes/ProtectedRoute";
 import {ChangePage} from "./components/change/ChangePage";
 import {UsersPage} from "./components/users/UsersPage";
 import {HomePage} from "./components/home/HomePage";
 import '../src/components/mainStyles.scss';
-
-//TODO create homepage, refactor login on load, create admin interface, create validation
 
 const App: React.FC = () => {
 

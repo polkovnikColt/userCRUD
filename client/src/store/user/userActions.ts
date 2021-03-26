@@ -3,7 +3,7 @@ import {Dispatch} from "react";
 import axios from '../../axios/initAxios'
 import {
     ChangeCredentialType,
-    CreateAccountType, DeleteProfileType, LoadAllProfilesType, LoadAllUsersType,
+    CreateAccountType, DeleteProfileType, DeleteUserType, LoadAllProfilesType, LoadAllUsersType,
     LoadProfilesType, LoginType,
     RegistrationType, UpdateToAdminType
 } from "./userActionsTypes";
@@ -19,6 +19,7 @@ export const LOGIN_ON_LOAD = "LOGIN_ON_LOAD";
 export const LOAD_ALL_PROFILES = "LOAD_ALL_PROFILES";
 export const LOAD_ALL_USERS = "LOAD_ALL_USERS";
 export const UPDATE_TO_ADMIN = "UPDATE_TO_ADMIN";
+export const DELETE_USER = "DELETE_USER";
 
 export const loadProfiles = (user: UserInterface | null) => {
     return async (dispatch: Dispatch<LoadProfilesType>) => {
@@ -83,20 +84,23 @@ export const login = (user: UserInterface) => {
 
 export const loadAllProfiles = () => {
     return async (dispatch: Dispatch<LoadAllProfilesType>) => {
-        const response = await axios.get('profile/all');
-        dispatch({
-            type: LOAD_ALL_PROFILES,
-            payload: response.data
-        })
+        try {
+            const response = await axios.get('profile/all');
+            dispatch({
+                type: LOAD_ALL_PROFILES,
+                payload: response.data
+            })
+        } catch (e) {
+            alert("Can't load profiles")
+        }
     }
 }
 
 export const registration = (credential: UserInterface) => {
-
     return async (dispatch: Dispatch<RegistrationType>) => {
-        localStorage.clear();
         try {
             const response = await axios.post("/login/registration", credential);
+            console.log(response.data)
             localStorage.setItem('token', response.data.token);
             dispatch({
                 type: REGISTRATION,
@@ -110,29 +114,52 @@ export const registration = (credential: UserInterface) => {
 
 export const deleteProfile = (id: number) => {
     return async (dispatch: Dispatch<DeleteProfileType>) => {
-        const response = await axios.delete(`/profile/${id}`);
-        if (response.status === 200) {
-            alert("Profile was deleted");
+        try {
+            const response = await axios.delete(`/profile/${id}`);
+            if (response.status === 200) {
+                alert("Profile was deleted");
+            }
+            dispatch({
+                type: DELETE_PROFILE,
+                payload: id
+            })
+        } catch (e) {
+            alert("Something went wrong")
         }
-        dispatch({
-            type: DELETE_PROFILE,
-            payload: id
-        })
+    }
+}
+
+export const deleteUser = (id:number) => {
+    return async (dispatch: Dispatch<DeleteUserType>) => {
+        try {
+            const response = axios.delete(`user/${id}`);
+            dispatch({
+                type: DELETE_USER,
+                payload: id
+            })
+        } catch (e) {
+            alert("Can't delete user profile")
+        }
     }
 }
 
 export const updateToAdmin = (id: number,) => {
     return async (dispatch: Dispatch<UpdateToAdminType>) => {
-        const response = await axios.put(`user/${id}`, {role: 'admin'});
-        dispatch({
-            type: UPDATE_TO_ADMIN,
-            payload: {id:id,role:'admin'}
-        })
+        try {
+            const response = await axios.put(`user/${id}`, {role: 'admin'});
+            dispatch({
+                type: UPDATE_TO_ADMIN,
+                payload: {id: id, role: 'admin'}
+            })
+        } catch (e) {
+            alert("Can't update this user")
+        }
     }
 }
 
 export const changeCredential = (credential: ProfileInterface) => {
     return async (dispatch: Dispatch<ChangeCredentialType>) => {
+        console.log(credential)
         try {
             const response = await axios.put(`/profile/${credential.id}`,
                 credential);

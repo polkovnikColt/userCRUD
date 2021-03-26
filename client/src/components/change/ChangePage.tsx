@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
-import {Button, Layout} from "antd";
-import {Selector} from "../reusable/Selector";
+import {Layout} from "antd";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store/store";
 import {getFormData} from "./additional/service";
 import {Key} from "antd/es/table/interface";
-import {FormItem} from "../reusable/FormItem";
 import {changeCredential} from "../../store/user/userActions";
 import {ProfileInterface} from "../../types/types";
+import {DataForm} from "../reusable/items/DataForm";
 
 
 const {Content} = Layout;
@@ -25,7 +24,7 @@ export const ChangePage: React.FC = () => {
         birthday:'',
         age: 0,
         gender: '',
-        role:''
+        role:user.userCredential?.role
     } as ProfileInterface);
 
     const getUserByName = (name:string,value:string):void => {
@@ -47,26 +46,14 @@ export const ChangePage: React.FC = () => {
 
     return (
         <Content style={{height: window.innerHeight}}>
-            <div className="form-padding">
-                <div className="w-100">
-                    <Selector
-                        message={'Choose name: '}
-                        name={'name'}
-                        values={getProfileNames()}
-                        changeHandler={getUserByName}
-                    />
-                </div>
-                {getFormData().map((formData) =>
-                    <FormItem formData={formData} changeHandler={handleChange}/>
-                )}
-                <Button
-                    className="mx-auto"
-                    onClick={handleSubmit}
-                    type="primary">
-                    Submit
-                </Button>
-            </div>
-
+           <DataForm
+               formData={getFormData()}
+               handleChange={handleChange}
+               handleSubmit={handleSubmit}
+               selectorHandler={getUserByName}
+               values={getProfileNames()}
+               keys="name"
+            />
         </Content>
     )
 }

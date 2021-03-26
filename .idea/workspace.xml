@@ -51,11 +51,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\WebstormProjects\UserCRUD\client\src\components\reusable\selectors" />
+      <recent name="C:\Users\User\WebstormProjects\UserCRUD\client\src\components\reusable\items" />
+      <recent name="C:\Users\User\WebstormProjects\UserCRUD\client\src\components\reusable\routes" />
       <recent name="C:\Users\User\WebstormProjects\UserCRUD\client\src\components\reusable" />
       <recent name="C:\Users\User\WebstormProjects\UserCRUD\client\src\components\users\additional" />
-      <recent name="C:\Users\User\WebstormProjects\UserCRUD\client\src\components\users\additional " />
-      <recent name="C:\Users\User\WebstormProjects\UserCRUD\server\src\guard-and-middleware\middleware" />
-      <recent name="C:\Users\User\WebstormProjects\UserCRUD\server\src\guard-and-middleware" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -72,7 +72,9 @@
       <workItem from="1616401070226" duration="22396000" />
       <workItem from="1616488846611" duration="22876000" />
       <workItem from="1616574978546" duration="28246000" />
-      <workItem from="1616662494339" duration="22273000" />
+      <workItem from="1616662494339" duration="23180000" />
+      <workItem from="1616699027907" duration="30000" />
+      <workItem from="1616745765704" duration="24127000" />
     </task>
     <servers />
   </component>
@@ -103,18 +105,22 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="399" y="163" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.720@0.0.1280.720" timestamp="1616406382966" />
-    <state x="371" y="108" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1616072422474">
+    <state x="446" y="77" key="#com.intellij.ide.util.MemberChooser" timestamp="1616761816105">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="371" y="108" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.720@0.0.1280.720" timestamp="1616072422474" />
+    <state x="446" y="77" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720@0.0.1280.720" timestamp="1616761816105" />
+    <state x="371" y="108" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1616760888731">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="371" y="108" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.720@0.0.1280.720" timestamp="1616760888731" />
     <state x="310" y="139" key="EditFileWatcherDialog" timestamp="1616513773376">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="310" y="139" key="EditFileWatcherDialog/0.0.1280.720@0.0.1280.720" timestamp="1616513773376" />
-    <state x="421" y="116" key="FileChooserDialogImpl" timestamp="1616595443505">
+    <state x="421" y="116" key="FileChooserDialogImpl" timestamp="1616770555350">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="421" y="116" key="FileChooserDialogImpl/0.0.1280.720@0.0.1280.720" timestamp="1616595443505" />
+    <state x="421" y="116" key="FileChooserDialogImpl/0.0.1280.720@0.0.1280.720" timestamp="1616770555350" />
     <state x="303" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1616586217259">
       <screen x="0" y="0" width="1280" height="720" />
     </state>

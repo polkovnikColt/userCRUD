@@ -1,17 +1,15 @@
 import React from 'react';
 import {DatePicker, Form, Input} from "antd";
 import {Moment} from 'moment';
-import {FormDataInterface} from "../../types/types";
+import {FormDataInterface} from "../../../types/types";
 
 type FormItemProps = {
     formData: FormDataInterface,
     changeHandler: (name: string, value: string) => void;
 }
 
-export const FormItem: React.FC<FormItemProps> = ({
-                                                      formData,
-                                                      changeHandler,
-                                                  }) => {
+export const FormItem: React.FC<FormItemProps> =
+    ({formData, changeHandler,}) => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         changeHandler(formData.name, e.target.value);

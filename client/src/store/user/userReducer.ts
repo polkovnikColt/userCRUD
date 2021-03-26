@@ -3,6 +3,7 @@ import {
     CHANGE_CREDENTIAL,
     CREATE_ACCOUNT,
     DELETE_PROFILE,
+    DELETE_USER,
     LOAD_ALL_PROFILES,
     LOAD_ALL_USERS,
     LOAD_USER_PROFILES,
@@ -16,6 +17,7 @@ import {
     ChangeCredentialType,
     CreateAccountType,
     DeleteProfileType,
+    DeleteUserType,
     LoadAllProfilesType,
     LoadAllUsersType,
     LoadProfilesType,
@@ -35,7 +37,7 @@ const initState: UserState = {
 
 type ActionType = LoginType | RegistrationType | ChangeCredentialType | CreateAccountType
     | LoadProfilesType | DeleteProfileType | UnlogType | LoadAllProfilesType | LoadAllUsersType
-    | UpdateToAdminType;
+    | UpdateToAdminType | DeleteUserType;
 
 export const userReducer = (state = initState, action: ActionType) => {
     switch (action.type) {
@@ -48,14 +50,20 @@ export const userReducer = (state = initState, action: ActionType) => {
                 allProfiles:
                     state.allProfiles.filter((profile: ProfileInterface) => profile.id !== action.payload)
             };
+        case DELETE_USER:
+            return {
+                ...state,
+            allUsers: state.allUsers
+                .filter((user:UserInterface) => user.id !== action.payload),
+            allProfiles: state.allProfiles
+                .filter((profile:ProfileInterface) => profile.user !== action.payload)
+            }
         case UPDATE_TO_ADMIN:
             return {
                 ...state, allUsers: state.allUsers.map((user: UserInterface) => {
                     if (user.id === action.payload.id) {
-                        console.log(action.payload.role)
                         return {...user, role: action.payload.role}
                     }
-                    console.log(user);
                     return user;
                 })
             }
@@ -77,11 +85,18 @@ export const userReducer = (state = initState, action: ActionType) => {
             return {
                 ...state, userProfiles:
                     state.userProfiles.map((profile: ProfileInterface) => {
-                        if (profile.name === action.payload.name) {
+                        console.log(profile.id === action.payload.id)
+                        if (profile.id === action.payload.id) {
                             return {...profile, ...action.payload};
                         }
                         return profile;
-                    })
+                    }),
+                allProfiles: state.allProfiles.map((profile: ProfileInterface) => {
+                    if (profile.id === action.payload.id) {
+                        return {...profile, ...action.payload};
+                    }
+                    return profile;
+                })
             };
 
         default:

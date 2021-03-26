@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {Layout, Table} from "antd";
-import {columns} from "./additional/service";
+import {columns, getProfilesName} from "./additional/service";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState, UserState} from "../../store/store";
-import {DeleteProfile} from "../reusable/DeleteProfile";
 import {deleteProfile, loadProfiles} from "../../store/user/userActions";
+import {Manipulator} from "../reusable/selectors/Manipulator";
+import {ProfileInterface} from "../../types/types";
 
 const {Content} = Layout;
 
@@ -12,6 +13,12 @@ export const MainPage: React.FC = () => {
 
     const dispatch = useDispatch();
     const user:UserState = useSelector((store: RootState) => store.user);
+    const [profileId,setProfileId] = useState(0);
+
+    const profileHandler = (name:string,value:string) => {
+        const credential: ProfileInterface = user.allProfiles.filter(profile => profile.name === value)[0];
+        setProfileId(+credential.id);
+    }
 
     useEffect(() => {
         dispatch(loadProfiles(user.userCredential));
@@ -24,9 +31,15 @@ export const MainPage: React.FC = () => {
                 className="form-padding"
                 columns={columns}
                 dataSource={user.userProfiles}/>
-                <DeleteProfile
-                    profiles={user.userProfiles}
-                />
+               <Manipulator
+                   handler={profileHandler}
+                   dispatchFunction={deleteProfile}
+                   id={profileId}
+                   message="Profile to delete"
+                   name="delete"
+                   buttonText="Delete"
+                   values={getProfilesName(user.userProfiles)}
+                   />
         </Content>
     )
 }

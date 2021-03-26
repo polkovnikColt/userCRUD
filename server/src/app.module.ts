@@ -4,7 +4,10 @@ import {UserModule} from './user/user.module'
 import {LoginModule} from "./auth/login.module";
 
 @Module({
-    imports: [UserModule,ProfileModule,LoginModule],
+    imports: [
+        UserModule,
+        ProfileModule,
+        LoginModule],
     controllers: [],
     providers: [],
 })

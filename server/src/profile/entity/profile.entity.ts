@@ -30,6 +30,6 @@ export class Profile {
     @Column()
     role:string
 
-    @ManyToOne(() => User, user => user.id)
-    user: number
+    @ManyToOne(type => User, user => user.profile,{ onDelete: "CASCADE" })
+    user: User
 }

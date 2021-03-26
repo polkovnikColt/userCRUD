@@ -1,11 +1,5 @@
-import {ProfileInterface} from "../../../types/types";
+import {column, ProfileInterface} from "../../../types/types";
 import {Key} from "antd/es/table/interface";
-
-interface column {
-    title: string,
-    dataIndex: string,
-    key: string
-}
 
 export const columns: column[] = [
     {

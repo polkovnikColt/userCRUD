@@ -2,7 +2,7 @@ import {ProfileInterface, UserInterface} from "../../types/types";
 import {
     CHANGE_CREDENTIAL,
     CREATE_ACCOUNT,
-    DELETE_PROFILE, LOAD_ALL_PROFILES, LOAD_ALL_USERS,
+    DELETE_PROFILE, DELETE_USER, LOAD_ALL_PROFILES, LOAD_ALL_USERS,
     LOAD_USER_PROFILES,
     LOGIN, LOGIN_ON_LOAD,
     REGISTRATION, UNLOG, UPDATE_TO_ADMIN
@@ -55,4 +55,9 @@ export type LoadAllUsersType = {
 export type UpdateToAdminType = {
     type: typeof UPDATE_TO_ADMIN
     payload: {id:number,role:string}
+}
+
+export type DeleteUserType ={
+    type: typeof DELETE_USER
+    payload:number
 }

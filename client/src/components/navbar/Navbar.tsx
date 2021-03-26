@@ -32,7 +32,7 @@ export const Navbar: React.FC = () => {
                     {!!user.userCredential ?
                         <Button
                             onClick={unlogUser}
-                            type="primary">
+                           type = "dashed">
                             Unlog
                         </Button> :
                         null}

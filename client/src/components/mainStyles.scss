@@ -1,5 +1,7 @@
+$primary-color:#1890ff;
+
 .mx-auto{
-  margin: 0 auto;
+  margin: 2% auto;
 }
 
 .w-50{
@@ -20,4 +22,15 @@
 }
 .m-1{
  margin: 1%;
+}
+
+.ant-btn{
+  display: block!important;
+}
+
+.ant-btn-dashed{
+  display: inline-block!important;
+  background-color: inherit!important;
+  border-color: $primary-color!important;
+  color: $primary-color!important;
 }

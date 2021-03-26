@@ -1,11 +1,7 @@
 import {UserState} from "../../../store/store";
-import {ProfileInterface, UserInterface} from "../../../types/types";
+import {column, FormDataInterface, ProfileInterface, UserInterface} from "../../../types/types";
+import {Key} from "antd/es/table/interface";
 
-interface column {
-    title: string,
-    dataIndex: string,
-    key: string
-}
 
 export const adminDataTableColumns: column[] = [
     {
@@ -68,6 +64,32 @@ export const columns: column[] = [
     },
 ];
 
+export const getFormData = (): FormDataInterface[] => {
+    return [
+        {
+            label: "Name",
+            name: "name",
+            message: "Enter your username",
+        },
+        {
+            label: "City",
+            name: "city",
+            message: "Enter your city",
+        },
+        {
+            label: "Age",
+            name: "age",
+            message: "Enter your age",
+        },
+        {
+            label: "Birthday",
+            name: "birthday",
+            message: "Enter your birthday",
+            datePicker:true
+        }
+    ]
+}
+
 export const organizeData = (user: UserState) => {
     const userQuantity = user.allUsers.length;
     const profileQuantity = user.allProfiles.length;
@@ -78,6 +100,10 @@ export const organizeData = (user: UserState) => {
         profiles: profileQuantity,
         older: older
     }]
+}
+
+export const getProfilesName = (profiles:ProfileInterface[]):Key[]  => {
+    return profiles.map(profile => profile.name) as Key[];
 }
 
 export const getUsersEmails = (users: UserInterface[]) => {

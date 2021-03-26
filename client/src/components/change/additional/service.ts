@@ -8,17 +8,6 @@ export const getFormData = ():FormDataInterface[] => {
             message: "Enter your username",
         },
         {
-            label: "Password",
-            name: "password",
-            message: "Enter your password",
-            password: true
-        },
-        {
-            label: "Email",
-            name: "email",
-            message: "Enter your email",
-        },
-        {
             label: "City",
             name: "city",
             message: "Enter your city",
@@ -27,6 +16,12 @@ export const getFormData = ():FormDataInterface[] => {
             label: "Age",
             name: "age",
             message: "Enter your age",
+        },
+        {
+            label:"Birthday",
+            name:"birthday",
+            message:"Enter your birthday",
+            datePicker:true
         }
     ]
 }

@@ -7,22 +7,12 @@ import {JwtStrategy} from './jwt/jwt.strategy';
 import {LoginService} from "./login.service";
 import {LoginMiddleware} from "../guard-and-middleware/middleware/login.middleware";
 import {LoginOnLoadMiddleware} from "../guard-and-middleware/middleware/loginOnLoad.middleware";
+import {JwtShared} from "./jwt/jwt.module";
 
 @Module({
-    imports: [
-        PassportModule,
-        ConfigModule,
-        JwtModule.registerAsync({
-            imports: [ConfigModule],
-            useFactory: (configService: ConfigService) => ({
-                secret: 'secret',
-                signOptions: {expiresIn: '1h'}
-            }),
-            inject: [ConfigService]
-        })
-    ],
+    imports: [JwtShared],
     controllers: [LoginController],
-    providers: [LoginService, JwtStrategy]
+    providers: [LoginService, JwtStrategy, ConfigService]
 })
 
 export class LoginModule implements NestModule {

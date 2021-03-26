@@ -2,10 +2,10 @@ import {MiddlewareConsumer, Module, NestModule, RequestMethod} from '@nestjs/com
 import {ProfileController} from './profile.controller';
 import {ProfileService} from './profile.service';
 import {AdminMiddleware} from "../guard-and-middleware/middleware/admin.middleware";
-
+import {JwtShared} from "../auth/jwt/jwt.module";
 
 @Module({
-    imports: [],
+    imports: [JwtShared],
     controllers: [ProfileController],
     providers: [ProfileService],
 })

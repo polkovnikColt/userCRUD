@@ -1,5 +1,6 @@
 import {Entity,PrimaryGeneratedColumn, Column, OneToMany} from 'typeorm';
 import {Profile} from '../../profile/entity/profile.entity'
+import {UserInterface} from "../../types/types";
 
 @Entity()
 export class User{
@@ -15,6 +16,6 @@ export class User{
     @Column()
     role:string
 
-    @OneToMany(()=> Profile, profile => profile.id)
-    profile_id: number[]
+    @OneToMany(type => Profile, profile => profile.user)
+    profile: Profile[]
 }

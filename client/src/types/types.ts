@@ -31,3 +31,8 @@ export interface FormDataInterface{
     datePicker?: boolean
 }
 
+export interface column {
+    title: string,
+    dataIndex: string,
+    key: string
+}
