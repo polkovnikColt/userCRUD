@@ -21,12 +21,16 @@ export const getFormData = (): FormDataInterface[] => {
             label: "Birthday",
             name: "birthday",
             message: "Enter your birthday",
-            datePicker:true
+            datePicker: true
         }
     ]
 }
 
-export const validateCredentials = (credential:ProfileInterface):boolean => {
-
-    return true;
+export const validateCredentials = (credential: ProfileInterface): boolean => {
+   const isValidAge = typeof credential.age === "number" && credential.age > 0;
+   const isValidGender = credential.gender !== "none";
+   const isValidName = credential.name !== "";
+   const isValidCity = credential.city !== "";
+   const isValidBirthday = credential.birthday !== "";
+   return isValidAge && isValidBirthday && isValidGender && isValidName && isValidCity;
 }

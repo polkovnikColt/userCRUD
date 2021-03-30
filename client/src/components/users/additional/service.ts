@@ -1,4 +1,4 @@
-import {UserState} from "../../../store/store";
+import {RootState, UserState} from "../../../store/store";
 import {column, FormDataInterface, ProfileInterface, UserInterface} from "../../../types/types";
 import {Key} from "antd/es/table/interface";
 
@@ -31,16 +31,6 @@ export const columns: column[] = [
         title: 'Age',
         dataIndex: 'age',
         key: 'age',
-    },
-    {
-        title: 'Email',
-        dataIndex: 'email',
-        key: 'email',
-    },
-    {
-        title: 'Password',
-        dataIndex: 'password',
-        key: 'password',
     },
     {
         title: 'Gender',
@@ -85,7 +75,7 @@ export const getFormData = (): FormDataInterface[] => {
             label: "Birthday",
             name: "birthday",
             message: "Enter your birthday",
-            datePicker:true
+            datePicker: true
         }
     ]
 }
@@ -102,10 +92,17 @@ export const organizeData = (user: UserState) => {
     }]
 }
 
-export const getProfilesName = (profiles:ProfileInterface[]):Key[]  => {
+export const getProfilesName = (profiles: ProfileInterface[]): Key[] => {
     return profiles.map(profile => profile.name) as Key[];
 }
 
-export const getUsersEmails = (users: UserInterface[]) => {
-    return users.map((user:UserInterface) => user.email);
+export const getUsersEmailsExceptCurrent = (currentUser: UserState):Key[] => {
+    return currentUser.allUsers
+        .filter((user:UserInterface) => user.email !== currentUser.userCredential?.email)
+        .map((user:UserInterface) => user.email) as Key[];
+}
+
+export const validateCredentials = (credential: ProfileInterface): boolean => {
+    const isValidAge = typeof credential.age === "number" && credential.age > 0;
+    return isValidAge;
 }

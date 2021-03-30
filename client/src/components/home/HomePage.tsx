@@ -44,7 +44,7 @@ export const HomePage: React.FC = () => {
             style={{height: window.innerHeight}}
         >
             <div className="w-100">
-                <h2 className="mx-auto w-50">Welcome to the user CRUD</h2>
+                <h2 className="mx-auto w-50">Welcome to the profile manager</h2>
                 <h3 className="mx-auto w-50">PLease login or create an account</h3>
             </div>
             {getFormData().map((item, i) =>

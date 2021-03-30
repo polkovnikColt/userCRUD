@@ -2,8 +2,6 @@ import {MiddlewareConsumer, Module, NestModule, RequestMethod} from '@nestjs/com
 import {UserController} from './user.controller';
 import {UserService} from './user.service';
 import {AdminMiddleware} from "../guard-and-middleware/middleware/admin.middleware";
-import {JwtModule, JwtService} from "@nestjs/jwt";
-import {ConfigModule, ConfigService} from "@nestjs/config";
 import {JwtShared} from "../auth/jwt/jwt.module";
 
 @Module({

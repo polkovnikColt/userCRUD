@@ -13,16 +13,6 @@ export const columns: column[] = [
         key: 'age',
     },
     {
-        title: 'Email',
-        dataIndex: 'email',
-        key: 'email',
-    },
-    {
-        title: 'Password',
-        dataIndex: 'password',
-        key: 'password',
-    },
-    {
         title: 'Gender',
         dataIndex: 'gender',
         key: 'gender',

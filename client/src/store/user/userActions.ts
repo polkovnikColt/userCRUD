@@ -49,6 +49,7 @@ export const loginOnLoad = () => {
     return async (dispatch: Dispatch<LoginType>) => {
         try {
             const response = await axios.get('/login/load');
+            console.log(response.data);
             dispatch({
                 type: LOGIN,
                 payload: response.data.user

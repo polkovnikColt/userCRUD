@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Collapse} from "antd";
 import {DataForm} from "../../reusable/items/DataForm";
-import {getFormData} from "./service";
+import {getFormData, validateCredentials} from "./service";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../store/store";
 import {changeCredential} from "../../../store/user/userActions";
@@ -41,6 +41,10 @@ export const ChangeCredential: React.FC = () => {
     }
 
     const handleSubmit = (): void => {
+        if(!validateCredentials(credential)){
+            alert("All fields must have correct values");
+            return;
+        }
         dispatch(changeCredential(credential));
     }
 

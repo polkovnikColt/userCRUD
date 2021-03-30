@@ -7,6 +7,7 @@ import {Key} from "antd/es/table/interface";
 import {changeCredential} from "../../store/user/userActions";
 import {ProfileInterface} from "../../types/types";
 import {DataForm} from "../reusable/items/DataForm";
+import {validateCredentials} from "./additional/service";
 
 
 const {Content} = Layout;
@@ -18,8 +19,6 @@ export const ChangePage: React.FC = () => {
     const [credential, setCredential] = useState({
         user: user.userCredential?.id,
         name: '',
-        email: user.userCredential?.email,
-        password: user.userCredential?.password,
         city: '',
         birthday:'',
         age: 0,
@@ -41,6 +40,10 @@ export const ChangePage: React.FC = () => {
         return user.userProfiles.map(user => user.name) as Key[];
     }
     const handleSubmit = () => {
+        if(!validateCredentials(credential)){
+            alert("All fields must have correct value");
+            return;
+        }
         dispatch(changeCredential(credential));
     }
 

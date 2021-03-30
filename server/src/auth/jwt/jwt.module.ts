@@ -4,22 +4,22 @@ import {PassportModule} from "@nestjs/passport";
 import {ConfigModule, ConfigService} from "@nestjs/config";
 import {JwtModule} from "@nestjs/jwt";
 import {LoginService} from "../login.service";
+import {config} from "./secret";
 
 @Module({
     imports: [
         PassportModule,
-        ConfigModule,
         JwtModule.registerAsync({
-            imports: [ConfigModule],
-            useFactory: (configService: ConfigService) => ({
-                secret: 'secret',
-                signOptions: {expiresIn: '1h'}
+            imports: [],
+            useFactory: () => ({
+                secret: config.secret,
+                signOptions: {expiresIn: config.expiresIn}
             }),
-            inject: [ConfigService]
+            inject: []
         })
     ],
     controllers: [],
-    providers: [ConfigService,JwtStrategy, LoginService],
+    providers: [JwtStrategy, LoginService],
     exports: [JwtModule]
 })
 export class JwtShared {}

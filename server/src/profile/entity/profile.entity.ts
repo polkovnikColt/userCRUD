@@ -13,12 +13,6 @@ export class Profile {
     age:number
 
     @Column()
-    email:string
-
-    @Column()
-    password:string
-
-    @Column()
     city: string
 
     @Column()

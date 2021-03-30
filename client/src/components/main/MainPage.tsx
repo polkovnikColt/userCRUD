@@ -16,7 +16,7 @@ export const MainPage: React.FC = () => {
     const [profileId,setProfileId] = useState(0);
 
     const profileHandler = (name:string,value:string) => {
-        const credential: ProfileInterface = user.allProfiles.filter(profile => profile.name === value)[0];
+        const credential: ProfileInterface = user.userProfiles.filter(profile => profile.name === value)[0];
         setProfileId(+credential.id);
     }
 

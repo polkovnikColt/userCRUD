@@ -1,4 +1,4 @@
-import {FormDataInterface} from "../../../types/types";
+import {FormDataInterface, ProfileInterface} from "../../../types/types";
 
 export const getFormData = ():FormDataInterface[] => {
     return [
@@ -24,4 +24,9 @@ export const getFormData = ():FormDataInterface[] => {
             datePicker:true
         }
     ]
+}
+
+export const validateCredentials = (credential:ProfileInterface):boolean => {
+    const isValidAge = typeof credential.age === "number" && credential.age > 0;
+    return isValidAge;
 }

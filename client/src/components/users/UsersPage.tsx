@@ -4,7 +4,12 @@ import {columns} from "../main/additional/service";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store/store";
 import {deleteProfile, deleteUser, loadAllProfiles, loadAllUsers, updateToAdmin} from "../../store/user/userActions";
-import {adminDataTableColumns, getProfilesName, getUsersEmails, organizeData} from "./additional/service";
+import {
+    adminDataTableColumns,
+    getProfilesName,
+    getUsersEmailsExceptCurrent,
+    organizeData
+} from "./additional/service";
 import {ChangeCredential} from "./additional/ChangeCredential";
 import {ProfileInterface, UserInterface} from "../../types/types";
 import {Manipulator} from "../reusable/selectors/Manipulator";
@@ -57,7 +62,7 @@ export const UsersPage: React.FC = () => {
                 message="Update user to admin"
                 name="update"
                 buttonText="Update"
-                values={getUsersEmails(user.allUsers)}
+                values={getUsersEmailsExceptCurrent(user)}
                 />
              <Manipulator
                  handler={userHandler}
@@ -66,7 +71,7 @@ export const UsersPage: React.FC = () => {
                  message="Delete user from system"
                  name="delete"
                  buttonText="Delete"
-                 values={getUsersEmails(user.allUsers)}
+                 values={getUsersEmailsExceptCurrent(user)}
                  />
             <ChangeCredential/>
             <Table
