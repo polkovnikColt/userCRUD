@@ -38,6 +38,8 @@ export const HomePage: React.FC = () => {
         }
     };
 
+    const handleRegistr = () => setRegistr(prev => !prev);
+
     return (
         <Content
             className="form-padding"
@@ -54,7 +56,7 @@ export const HomePage: React.FC = () => {
                     changeHandler={handleChange}/>
             )}
             <Checkbox
-                onChange={() => setRegistr(prev => !prev)}>
+                onChange={handleRegistr}>
                 Registration
             </Checkbox>
             <Button

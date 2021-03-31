@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Layout, Table} from "antd";
+import {Layout, Row, Table} from "antd";
 import {columns} from "../main/additional/service";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store/store";
@@ -51,7 +51,7 @@ export const UsersPage: React.FC = () => {
                 dispatchFunction={deleteProfile}
                 id={profileId}
                 message="Profile to delete"
-                name="delete"
+                name=""
                 buttonText="Delete"
                 values={getProfilesName(user.allProfiles) }
                 />

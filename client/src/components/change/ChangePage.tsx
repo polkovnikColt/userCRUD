@@ -40,7 +40,7 @@ export const ChangePage: React.FC = () => {
         return user.userProfiles.map(user => user.name) as Key[];
     }
     const handleSubmit = () => {
-        if(!validateCredentials(credential)){
+        if(validateCredentials(credential)){
             alert("All fields must have correct value");
             return;
         }

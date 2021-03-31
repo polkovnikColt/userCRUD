@@ -31,7 +31,7 @@ export const CreateAccountPage: React.FC = () => {
     }
 
     const handleSubmit = ():void => {
-        if(!validateCredentials(credential)){
+        if(validateCredentials(credential)){
             alert("All fields must be filled and values correct");
             return;
         }

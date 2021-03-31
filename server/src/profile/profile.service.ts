@@ -28,6 +28,7 @@ export class ProfileService {
     }
 
     async createProfile(body: ProfileInterface): Promise<ProfileInterface> {
+        console.log(body);
         await this.manager.insert(Profile, body);
         return body;
     }

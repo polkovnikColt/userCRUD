@@ -32,7 +32,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1psWqcX5WTVw5Fga6HlfUvF1JPb" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -81,6 +83,8 @@
       <workItem from="1616951883624" duration="14514000" />
       <workItem from="1617039116171" duration="3592000" />
       <workItem from="1617089779057" duration="743000" />
+      <workItem from="1617097751897" duration="19257000" />
+      <workItem from="1617122549892" duration="986000" />
     </task>
     <servers />
   </component>
@@ -88,7 +92,9 @@
     <option name="version" value="3" />
   </component>
   <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.dockerignore" />
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.env" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.sql" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -107,18 +113,18 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="96" y="16" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.720@0.0.1280.720" timestamp="1616672030474" />
-    <state x="399" y="163" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1616406382966">
+    <state x="399" y="163" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1617103288312">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="399" y="163" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.720@0.0.1280.720" timestamp="1616406382966" />
+    <state x="399" y="163" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.720@0.0.1280.720" timestamp="1617103288312" />
     <state x="446" y="77" key="#com.intellij.ide.util.MemberChooser" timestamp="1616761816105">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="446" y="77" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720@0.0.1280.720" timestamp="1616761816105" />
-    <state x="371" y="108" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1616760888731">
+    <state x="371" y="108" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1617117218751">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="371" y="108" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.720@0.0.1280.720" timestamp="1616760888731" />
+    <state x="371" y="108" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.720@0.0.1280.720" timestamp="1617117218751" />
     <state x="310" y="139" key="EditFileWatcherDialog" timestamp="1616513773376">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -127,6 +133,10 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="421" y="116" key="FileChooserDialogImpl/0.0.1280.720@0.0.1280.720" timestamp="1617039130714" />
+    <state x="297" y="161" key="run.anything.popup" timestamp="1617098462712">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="297" y="161" key="run.anything.popup/0.0.1280.720@0.0.1280.720" timestamp="1617098462712" />
     <state x="303" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1616586217259">
       <screen x="0" y="0" width="1280" height="720" />
     </state>

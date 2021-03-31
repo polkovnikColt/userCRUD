@@ -13,7 +13,7 @@ type SelectProps = {
 export const Selector: React.FC<SelectProps> = ({message, values, name, changeHandler}) => {
 
     const handleChange = (e: SelectValue): void => {
-        changeHandler(name, e.toString());
+        changeHandler(name,e.toString());
     }
 
     return (
@@ -26,7 +26,7 @@ export const Selector: React.FC<SelectProps> = ({message, values, name, changeHa
                 defaultValue="none"
              >
                 {values.map((item, i) =>
-                    <Select.Option value={item}>{item}</Select.Option>
+                    <Select.Option value={item} key={i}>{item}</Select.Option>
                 )}
             </Select>
         </div>

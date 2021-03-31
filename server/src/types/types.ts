@@ -8,8 +8,6 @@ export interface UserInterface {
 export interface ProfileInterface {
     user: number
     name?: string,
-    email?: string | undefined,
-    password?: string | undefined,
     age: number,
     city?: string,
     birthday?: string,
@@ -18,8 +16,6 @@ export interface ProfileInterface {
 }
 
 export type LoginResponseType = {
-    token?: string,
-    user?: UserInterface,
-    loginError?: string
-    registrationError?:string
+    token: string,
+    user: UserInterface,
 }

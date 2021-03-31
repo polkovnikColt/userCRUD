@@ -2,7 +2,7 @@ import {User} from "../user/entity/user.entity";
 import {LoginResponseType, UserInterface} from "../types/types";
 import {getManager} from "typeorm/index";
 import {JwtService} from "@nestjs/jwt";
-import {Injectable, UnauthorizedException} from "@nestjs/common";
+import {BadRequestException, Injectable, UnauthorizedException} from "@nestjs/common";
 import * as bcrypt from 'bcrypt';
 import {config} from "./jwt/secret";
 
@@ -13,14 +13,11 @@ export class LoginService {
     constructor(private readonly jwtService: JwtService) {
         this.manager = getManager();
     }
-
     private async validateUser(user: UserInterface): Promise<UserInterface | null> {
         const candidate = await this.manager.findOne(User, {email: user.email});
-        if (!candidate.email) {
+        if (!candidate) {
             return null;
         }
-        console.log("Candidate",candidate.password)
-        console.log("User", user.password);
         const isMatch = await bcrypt.compare(user.password, candidate.password);
         if (isMatch) {
             return candidate;
@@ -49,9 +46,7 @@ export class LoginService {
                 user: user
             };
         } else {
-            return {
-                loginError: "User not found"
-            }
+            throw new UnauthorizedException();
         }
     }
 
@@ -60,15 +55,14 @@ export class LoginService {
         if (!candidate) {
             const hash = await bcrypt.hash(user.password, config.hashSalt)
             user.password = hash;
-            const newUser = await this.manager.insert(User, user);
-            return {
+            await this.manager.insert(User, user);
+            return  {
                 token: this.jwtService.sign({user}),
-                user: newUser
+                user: user
             }
-
         }
-        return {
-            registrationError: "User with such credentials exists"
+        else{
+            throw new BadRequestException();
         }
     }
 

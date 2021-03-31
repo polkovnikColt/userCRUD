@@ -101,11 +101,10 @@ export const registration = (credential: UserInterface) => {
     return async (dispatch: Dispatch<RegistrationType>) => {
         try {
             const response = await axios.post("/login/registration", credential);
-            console.log(response.data)
             localStorage.setItem('token', response.data.token);
             dispatch({
                 type: REGISTRATION,
-                payload: credential
+                payload: response.data.user
             });
         } catch (e) {
             alert("User with this credentials already exists");

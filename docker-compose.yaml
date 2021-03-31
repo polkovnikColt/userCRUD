@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: .
+    depends_on:
+      - db
+    ports:
+    - '3456:3456'
+
+  client:
+    build:
+      context: ./client
+      dockerfile: .
+    ports:
+    - '3000:3000'
+
+  db:
+    image: postgres:13.2-alpine
+    volumes:
+      - ./config/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: postgres
+      POSTGRES_DB: user_crud
+    ports:
+    - '5432:5432'
+    container_name: 'db'
+
