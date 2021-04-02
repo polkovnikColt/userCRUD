@@ -2,7 +2,8 @@ import React from 'react';
 import {HashRouter, Switch, Route} from 'react-router-dom';
 import {Layout} from "antd";
 import {Provider, useSelector} from "react-redux";
-import {RootState, store, UserState} from "./store/store";
+import {RootState, store} from "./store/store";
+import {UserState} from "./types/types";
 import {Navbar} from './components/navbar/Navbar';
 import {MainPage} from "./components/main/MainPage";
 import {CreateAccountPage} from "./components/create/CreateAccountPage";
@@ -37,7 +38,7 @@ const App: React.FC = () => {
                         <ProtectedRoute
                             component={UsersPage}
                             path={'/users'}
-                            isAuth={user.userCredential?.role === 'admin'}/>
+                            isAuth={user.userCredential?.role === "admin"}/>
                     </Switch>
                 </Provider>
             </Layout>

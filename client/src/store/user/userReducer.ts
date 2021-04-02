@@ -1,4 +1,4 @@
-import {UserState} from "../store";
+import {UserState} from "../../types/types";
 import {
     CHANGE_CREDENTIAL,
     CREATE_ACCOUNT,
@@ -28,7 +28,7 @@ import {
 } from "./userActionsTypes";
 
 
-const initState: UserState = {
+export const initState: UserState = {
     userCredential: null,
     userProfiles: [],
     allProfiles: [],

@@ -41,6 +41,8 @@ export const ChangeCredential: React.FC = () => {
     }
 
     const handleSubmit = (): void => {
+        console.log(credential.age)
+        console.log(credential.birthday)
         if(!validateCredentials(credential)){
             alert("All fields must have correct values");
             return;
@@ -55,6 +57,8 @@ export const ChangeCredential: React.FC = () => {
                 header="Change profile credential"
                 key="1">
                 <DataForm
+                    hasCheckBox={false}
+                    hasSelector={true}
                     formData={getFormData()}
                     handleChange={handleChange}
                     handleSubmit={handleSubmit}

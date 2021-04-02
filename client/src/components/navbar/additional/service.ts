@@ -1,8 +1,9 @@
 import {LinkInterface, FormDataInterface, UserInterface} from "../../../types/types";
+import {Input} from "antd";
 
-export const getLinks = (user:UserInterface | null): LinkInterface[] => {
-    if(user) {
-        if(user?.role === 'admin') {
+export const getLinks = (user: UserInterface | null): LinkInterface[] => {
+    if (user) {
+        if (user?.role === 'admin') {
             return [
                 {link: "Main", href: "/"},
                 {link: "Create profile", href: "/user"},
@@ -27,12 +28,12 @@ export const getFormData = (): FormDataInterface[] => {
             label: "Email",
             name: "email",
             message: "Enter your email",
-            password: false
-        },{
+            inputComponent: Input
+        }, {
             label: "Password",
             name: "password",
             message: "Enter your password",
-            password: true
+            inputComponent: Input.Password
         }]
 }
 

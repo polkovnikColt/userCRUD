@@ -41,6 +41,8 @@ export const CreateAccountPage: React.FC = () => {
     return (
         <Content style={{height: window.innerHeight}}>
             <DataForm
+                hasCheckBox={false}
+                hasSelector={true}
                 values={['male','female']}
                 formData={getFormData()}
                 handleChange={handleChange}

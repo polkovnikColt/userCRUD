@@ -8,9 +8,9 @@ type DBConnection = {
 
 export const initDB = async ():Promise<DBConnection> => {
     try {
-        const conn:Connection = await createConnection({
+       await createConnection({
             type: "postgres",
-            host: "db",
+            host: "localhost",
             port: 5432,
             username: "postgres",
             password: "root",

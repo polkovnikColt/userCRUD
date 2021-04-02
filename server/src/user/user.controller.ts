@@ -13,7 +13,7 @@ export class UserController {
         return this.userService.getUserByName(email);
     }
 
-    // @UseGuards(AuthGuard('jwt'))
+    @UseGuards(AuthGuard('jwt'))
     @Get()
     getAllUsers():Promise<UserInterface[]> {
         return this.userService.getAllUsers();

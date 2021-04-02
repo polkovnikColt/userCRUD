@@ -1,4 +1,5 @@
 import {FormDataInterface} from "../../../types/types";
+import {Input} from "antd";
 
 export const getFormData = (): FormDataInterface[] => {
     return [
@@ -6,11 +7,12 @@ export const getFormData = (): FormDataInterface[] => {
             label: "Email",
             name: "email",
             message: "Enter your email",
+            inputComponent:Input
         },{
             label: "Password",
             name: "password",
             message: "Enter your password",
-            password: true
+            inputComponent:Input.Password
         }]
 }
 

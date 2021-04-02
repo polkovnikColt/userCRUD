@@ -1,11 +1,20 @@
+import React, {Component, ForwardRefExoticComponent} from "react";
+
 export interface LinkInterface {
     link: string,
     href: string
 }
 
+export type UserState = {
+    userCredential: UserInterface | null,
+    userProfiles: ProfileInterface[]
+    allProfiles: ProfileInterface[]
+    allUsers:[]
+}
+
 export interface ProfileInterface {
     id: number
-    user:number | undefined,
+    user:number,
     name?: string | undefined,
     email?: string | undefined,
     password?: string | undefined,
@@ -27,8 +36,7 @@ export interface FormDataInterface{
     label:string,
     name:string,
     message:string,
-    password?: boolean,
-    datePicker?: boolean
+    inputComponent: typeof Component | ForwardRefExoticComponent<any>
 }
 
 export interface column {

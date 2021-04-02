@@ -1,9 +1,6 @@
 import {ForbiddenException, Injectable, NestMiddleware} from '@nestjs/common';
 import {Request, Response, NextFunction} from 'express';
 import {JwtService} from "@nestjs/jwt";
-import {UserInterface} from "../../types/types";
-
-
 
 @Injectable()
 export class AdminMiddleware implements NestMiddleware {

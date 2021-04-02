@@ -1,4 +1,5 @@
 import {FormDataInterface, ProfileInterface} from "../../../types/types";
+import {DatePicker, Input} from "antd";
 
 export const getFormData = (): FormDataInterface[] => {
     return [
@@ -6,22 +7,25 @@ export const getFormData = (): FormDataInterface[] => {
             label: "Name",
             name: "name",
             message: "Enter your username",
+            inputComponent:Input
         },
         {
             label: "City",
             name: "city",
             message: "Enter your city",
+            inputComponent:Input
         },
         {
             label: "Age",
             name: "age",
             message: "Enter your age",
+            inputComponent:Input
         },
         {
             label: "Birthday",
             name: "birthday",
             message: "Enter your birthday",
-            datePicker: true
+            inputComponent:DatePicker
         }
     ]
 }

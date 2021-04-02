@@ -9,7 +9,6 @@ import {ProfileInterface} from "../../types/types";
 import {DataForm} from "../reusable/items/DataForm";
 import {validateCredentials} from "./additional/service";
 
-
 const {Content} = Layout;
 
 export const ChangePage: React.FC = () => {
@@ -50,6 +49,8 @@ export const ChangePage: React.FC = () => {
     return (
         <Content style={{height: window.innerHeight}}>
            <DataForm
+               hasCheckBox={false}
+               hasSelector={true}
                formData={getFormData()}
                handleChange={handleChange}
                handleSubmit={handleSubmit}

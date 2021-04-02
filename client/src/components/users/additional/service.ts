@@ -1,6 +1,7 @@
-import {RootState, UserState} from "../../../store/store";
+import {UserState} from "../../../types/types";
 import {column, FormDataInterface, ProfileInterface, UserInterface} from "../../../types/types";
 import {Key} from "antd/es/table/interface";
+import {DatePicker, Input} from "antd";
 
 
 export const adminDataTableColumns: column[] = [
@@ -51,7 +52,11 @@ export const columns: column[] = [
         title: 'Birthday',
         dataIndex: 'birthday',
         key: 'birthday',
-    },
+    }, {
+        title: "Owner",
+        dataIndex: "email",
+        key: "email"
+    }
 ];
 
 export const getFormData = (): FormDataInterface[] => {
@@ -60,22 +65,25 @@ export const getFormData = (): FormDataInterface[] => {
             label: "Name",
             name: "name",
             message: "Enter your username",
+            inputComponent: Input
         },
         {
             label: "City",
             name: "city",
             message: "Enter your city",
+            inputComponent: Input
         },
         {
             label: "Age",
             name: "age",
             message: "Enter your age",
+            inputComponent: Input
         },
         {
             label: "Birthday",
             name: "birthday",
             message: "Enter your birthday",
-            datePicker: true
+            inputComponent: DatePicker
         }
     ]
 }
@@ -96,13 +104,31 @@ export const getProfilesName = (profiles: ProfileInterface[]): Key[] => {
     return profiles.map(profile => profile.name) as Key[];
 }
 
-export const getUsersEmailsExceptCurrent = (currentUser: UserState):Key[] => {
+export const appendOwner = (user: UserState) => {
+    const profiles: ProfileInterface[] = user.allProfiles;
+    return profiles.map((profile: ProfileInterface) => {
+
+        const owner: UserInterface = user.allUsers.filter((user: UserInterface) => {
+            // console.log(user.id, profile);
+            return user.id === profile.user
+        })[0]
+        return {
+            ...profile,
+            email: owner?.email
+        }
+    })
+}
+
+export const getUsersEmailsExceptCurrent = (currentUser: UserState): Key[] => {
     return currentUser.allUsers
-        .filter((user:UserInterface) => user.email !== currentUser.userCredential?.email)
-        .map((user:UserInterface) => user.email) as Key[];
+        .filter((user: UserInterface) => user.email !== currentUser.userCredential?.email)
+        .map((user: UserInterface) => user.email) as Key[];
 }
 
 export const validateCredentials = (credential: ProfileInterface): boolean => {
-    const isValidAge = typeof credential.age === "number" && credential.age > 0;
+    console.log(typeof credential.age)
+    const isValidAge =
+        typeof credential.age === "number"
+        && credential.age >= 0 ;
     return isValidAge;
 }

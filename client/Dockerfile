@@ -12,7 +12,6 @@ COPY . /client
 
 #CMD npm run start
 CMD npm run build
-
 FROM nginx:stable-alpine
 
 #COPY nginx.conf /etc/nginx/conf.d/default.conf

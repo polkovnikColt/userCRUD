@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../store/store";
 import {deleteProfile, deleteUser, loadAllProfiles, loadAllUsers, updateToAdmin} from "../../store/user/userActions";
 import {
-    adminDataTableColumns,
+    adminDataTableColumns, appendOwner,
     getProfilesName,
     getUsersEmailsExceptCurrent,
     organizeData
@@ -77,7 +77,7 @@ export const UsersPage: React.FC = () => {
             <Table
                 className="form-padding"
                 columns={columns}
-                dataSource={user.allProfiles}
+                dataSource={appendOwner(user)}
             />
         </Content>
     )

@@ -4,6 +4,7 @@ import {getFormData, validateCredential} from "../navbar/additional/service";
 import {FormItem} from "../reusable/items/FormItem";
 import {login, loginOnLoad, registration} from "../../store/user/userActions";
 import {useDispatch} from "react-redux";
+import {DataForm} from "../reusable/items/DataForm";
 
 const {Content} = Layout;
 
@@ -49,21 +50,15 @@ export const HomePage: React.FC = () => {
                 <h2 className="mx-auto w-50">Welcome to the profile manager</h2>
                 <h3 className="mx-auto w-50">PLease login or create an account</h3>
             </div>
-            {getFormData().map((item, i) =>
-                <FormItem
-                    formData={item}
-                    key={i}
-                    changeHandler={handleChange}/>
-            )}
-            <Checkbox
-                onChange={handleRegistr}>
-                Registration
-            </Checkbox>
-            <Button
-                onClick={handleOk}
-                type="primary">
-                Submit
-            </Button>
+            <DataForm
+                formData={getFormData()}
+                handleChange={handleChange}
+                handleSubmit={handleOk}
+                hasCheckBox={true}
+                checkboxMessage="Registration"
+                checkBoxHandler={handleRegistr}
+                hasSelector={false}
+                />
         </Content>
     )
 }

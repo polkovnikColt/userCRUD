@@ -49,7 +49,6 @@ export const loginOnLoad = () => {
     return async (dispatch: Dispatch<LoginType>) => {
         try {
             const response = await axios.get('/login/load');
-            console.log(response.data);
             dispatch({
                 type: LOGIN,
                 payload: response.data.user
@@ -147,6 +146,9 @@ export const updateToAdmin = (id: number,) => {
     return async (dispatch: Dispatch<UpdateToAdminType>) => {
         try {
             const response = await axios.put(`user/${id}`, {role: 'admin'});
+            if(response.status === 200){
+                alert('Profile was updated');
+            }
             dispatch({
                 type: UPDATE_TO_ADMIN,
                 payload: {id: id, role: 'admin'}
@@ -159,7 +161,6 @@ export const updateToAdmin = (id: number,) => {
 
 export const changeCredential = (credential: ProfileInterface) => {
     return async (dispatch: Dispatch<ChangeCredentialType>) => {
-        console.log(credential)
         try {
             const response = await axios.put(`/profile/${credential.id}`,
                 credential);
@@ -171,17 +172,24 @@ export const changeCredential = (credential: ProfileInterface) => {
                 payload: credential
             })
         } catch (e) {
-
+            alert("Cannot change credentials")
         }
     }
 }
 
 export const createAccount = (profile: ProfileInterface) => {
     return async (dispatch: Dispatch<CreateAccountType>) => {
-        const response = await axios.post('/profile', profile);
-        dispatch({
-            type: CREATE_ACCOUNT,
-            payload: response.data
-        })
-    };
+        try {
+            const response = await axios.post('/profile', profile);
+            if(response.status === 201){
+                alert("Profile has been created")
+            }
+            dispatch({
+                type: CREATE_ACCOUNT,
+                payload: response.data
+            })
+        }catch (e) {
+            alert("Cannot create profile")
+        }
+    }
 }

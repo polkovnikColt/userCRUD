@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {Layout, Table} from "antd";
-import {columns, getProfilesName} from "./additional/service";
+import {appendOwner, columns, getProfilesName} from "./additional/service";
 import {useDispatch, useSelector} from "react-redux";
-import {RootState, UserState} from "../../store/store";
+import {RootState} from "../../store/store";
 import {deleteProfile, loadProfiles} from "../../store/user/userActions";
 import {Manipulator} from "../reusable/selectors/Manipulator";
-import {ProfileInterface} from "../../types/types";
+import {ProfileInterface, UserState} from "../../types/types";
 
 const {Content} = Layout;
 
@@ -30,7 +30,7 @@ export const MainPage: React.FC = () => {
             <Table
                 className="form-padding"
                 columns={columns}
-                dataSource={user.userProfiles}/>
+                dataSource={appendOwner(user)}/>
                <Manipulator
                    handler={profileHandler}
                    dispatchFunction={deleteProfile}
