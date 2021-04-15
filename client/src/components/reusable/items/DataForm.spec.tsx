@@ -9,7 +9,10 @@ describe('Data form', () => {
 
     beforeEach(redefineMatchMedia);
     const onSubmit = jest.fn();
-    const mockDataFrom = () => <DataForm
+    const mockDataFrom = () =>
+        <DataForm
+        hasSelector={false}
+        hasCheckBox={false}
         formData={[
             {
                 label: "name",
@@ -28,7 +31,8 @@ describe('Data form', () => {
         handleSubmit={onSubmit}
         selectorHandler={jest.fn()}
         values={["male", "female"]}
-        keys=""/>;
+        keys=""
+    />;
 
     it('text input test', () => {
         render(mockDataFrom());
